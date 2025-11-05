@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./media/logo_small.webp" alt="Our Personas Logo"/>
     <h1>🌱 Our Personas</h1>
-    <h3><em>Organizing Us Rapidly to speed-up software development.</em></h3>
+    <h3><em>Our Personas - Organizing Us Rapidly with Personas: Powering Team Synergy and Project Velocity.</em></h3>
 </div>
 
 <p align="center">
