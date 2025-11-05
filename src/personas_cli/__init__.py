@@ -274,12 +274,12 @@ def get_key():
 def select_with_arrows(options: dict, prompt_text: str = "Select an option", default_key: str = None) -> str:
     """
     Interactive selection using arrow keys with Rich Live display.
-    
+
     Args:
         options: Dict with keys as option keys and values as descriptions
         prompt_text: Text to show above the options
         default_key: Default option key to start with
-        
+
     Returns:
         Selected option key
     """
@@ -345,6 +345,82 @@ def select_with_arrows(options: dict, prompt_text: str = "Select an option", def
         raise typer.Exit(1)
 
     return selected_key
+
+def multi_select_with_arrows(options: dict, prompt_text: str = "Select options", default_keys: list = None) -> list:
+    """
+    Interactive multi-selection using arrow keys and spacebar with Rich Live display.
+
+    Args:
+        options: Dict with keys as option keys and values as descriptions
+        prompt_text: Text to show above the options
+        default_keys: Default option keys to start with (pre-selected)
+
+    Returns:
+        List of selected option keys
+    """
+    option_keys = list(options.keys())
+    selected_index = 0
+    selected_keys = set(default_keys) if default_keys else set()
+
+    def create_selection_panel():
+        """Create the selection panel with current selection highlighted."""
+        table = Table.grid(padding=(0, 2))
+        table.add_column(style="cyan", justify="left", width=3)
+        table.add_column(style="white", justify="left", width=3)
+        table.add_column(style="white", justify="left")
+
+        for i, key in enumerate(option_keys):
+            cursor = "▶" if i == selected_index else " "
+            checkbox = "[green]◉[/green]" if key in selected_keys else "[dim]○[/dim]"
+            table.add_row(cursor, checkbox, f"[cyan]{key}[/cyan] [dim]({options[key]})[/dim]")
+
+        table.add_row("", "", "")
+        table.add_row("", "", "[dim]Use ↑/↓ to navigate, Space to toggle, Enter to confirm, Esc to cancel[/dim]")
+
+        return Panel(
+            table,
+            title=f"[bold]{prompt_text}[/bold]",
+            border_style="cyan",
+            padding=(1, 2)
+        )
+
+    console.print()
+
+    def run_selection_loop():
+        nonlocal selected_index
+        with Live(create_selection_panel(), console=console, transient=True, auto_refresh=False) as live:
+            while True:
+                try:
+                    key = get_key()
+                    if key == 'up':
+                        selected_index = (selected_index - 1) % len(option_keys)
+                    elif key == 'down':
+                        selected_index = (selected_index + 1) % len(option_keys)
+                    elif key == ' ':  # Spacebar to toggle selection
+                        current_key = option_keys[selected_index]
+                        if current_key in selected_keys:
+                            selected_keys.remove(current_key)
+                        else:
+                            selected_keys.add(current_key)
+                    elif key == 'enter':
+                        break
+                    elif key == 'escape':
+                        console.print("\n[yellow]Selection cancelled[/yellow]")
+                        raise typer.Exit(1)
+
+                    live.update(create_selection_panel(), refresh=True)
+
+                except KeyboardInterrupt:
+                    console.print("\n[yellow]Selection cancelled[/yellow]")
+                    raise typer.Exit(1)
+
+    run_selection_loop()
+
+    if not selected_keys:
+        console.print("\n[red]No options selected.[/red]")
+        raise typer.Exit(1)
+
+    return list(selected_keys)
 
 console = Console()
 
@@ -877,15 +953,15 @@ def init(
 ):
     """
     Initialize a new Personas Project from the latest template.
-    
+
     This command will:
     1. Check that required tools are installed (git is optional)
-    2. Let you choose your AI assistant
+    2. Let you choose your AI assistant(s)
     3. Download the appropriate template from GitHub
     4. Extract the template to a new project directory or current directory
     5. Initialize a fresh git repository (if not --no-git and no existing repo)
     6. Optionally set up AI assistant commands
-    
+
     Examples:
         personas init my-project
         personas init my-project --ai claude
@@ -967,33 +1043,34 @@ def init(
         if ai_assistant not in AGENT_CONFIG:
             console.print(f"[red]Error:[/red] Invalid AI assistant '{ai_assistant}'. Choose from: {', '.join(AGENT_CONFIG.keys())}")
             raise typer.Exit(1)
-        selected_ai = ai_assistant
+        selected_ais = [ai_assistant]
     else:
         # Create options dict for selection (agent_key: display_name)
         ai_choices = {key: config["name"] for key, config in AGENT_CONFIG.items()}
-        selected_ai = select_with_arrows(
-            ai_choices, 
-            "Choose your AI assistant:", 
-            "copilot"
+        selected_ais = multi_select_with_arrows(
+            ai_choices,
+            "Choose your AI assistants (Space to toggle, Enter to confirm):",
+            ["copilot"]
         )
 
     if not ignore_agent_tools:
-        agent_config = AGENT_CONFIG.get(selected_ai)
-        if agent_config and agent_config["requires_cli"]:
-            install_url = agent_config["install_url"]
-            if not check_tool(selected_ai):
-                error_panel = Panel(
-                    f"[cyan]{selected_ai}[/cyan] not found\n"
-                    f"Install from: [cyan]{install_url}[/cyan]\n"
-                    f"{agent_config['name']} is required to continue with this project type.\n\n"
-                    "Tip: Use [cyan]--ignore-agent-tools[/cyan] to skip this check",
-                    title="[red]Agent Detection Error[/red]",
-                    border_style="red",
-                    padding=(1, 2)
-                )
-                console.print()
-                console.print(error_panel)
-                raise typer.Exit(1)
+        for selected_ai in selected_ais:
+            agent_config = AGENT_CONFIG.get(selected_ai)
+            if agent_config and agent_config["requires_cli"]:
+                install_url = agent_config["install_url"]
+                if not check_tool(selected_ai):
+                    error_panel = Panel(
+                        f"[cyan]{selected_ai}[/cyan] not found\n"
+                        f"Install from: [cyan]{install_url}[/cyan]\n"
+                        f"{agent_config['name']} is required to continue with this project type.\n\n"
+                        "Tip: Use [cyan]--ignore-agent-tools[/cyan] to skip this check",
+                        title="[red]Agent Detection Error[/red]",
+                        border_style="red",
+                        padding=(1, 2)
+                    )
+                    console.print()
+                    console.print(error_panel)
+                    raise typer.Exit(1)
 
     if script_type:
         if script_type not in SCRIPT_TYPE_CHOICES:
@@ -1008,7 +1085,7 @@ def init(
         else:
             selected_script = default_script
 
-    console.print(f"[cyan]Selected AI assistant:[/cyan] {selected_ai}")
+    console.print(f"[cyan]Selected AI assistant(s):[/cyan] {', '.join(selected_ais)}")
     console.print(f"[cyan]Selected script type:[/cyan] {selected_script}")
 
     tracker = StepTracker("Initialize Personas Project")
@@ -1017,16 +1094,22 @@ def init(
 
     tracker.add("precheck", "Check required tools")
     tracker.complete("precheck", "ok")
-    tracker.add("ai-select", "Select AI assistant")
-    tracker.complete("ai-select", f"{selected_ai}")
+    tracker.add("ai-select", "Select AI assistant(s)")
+    tracker.complete("ai-select", f"{', '.join(selected_ais)}")
     tracker.add("script-select", "Select script type")
     tracker.complete("script-select", selected_script)
+
+    # Add steps for each AI assistant template download
+    for selected_ai in selected_ais:
+        for key, label in [
+            (f"fetch-{selected_ai}", f"Fetch {selected_ai} release"),
+            (f"download-{selected_ai}", f"Download {selected_ai} template"),
+            (f"extract-{selected_ai}", f"Extract {selected_ai} template"),
+        ]:
+            tracker.add(key, label)
+
+    # Add common steps
     for key, label in [
-        ("fetch", "Fetch latest release"),
-        ("download", "Download template"),
-        ("extract", "Extract template"),
-        ("zip-list", "Archive contents"),
-        ("extracted-summary", "Extraction summary"),
         ("chmod", "Ensure scripts executable"),
         ("cleanup", "Cleanup"),
         ("git", "Initialize git repository"),
@@ -1044,7 +1127,52 @@ def init(
             local_ssl_context = ssl_context if verify else False
             local_client = httpx.Client(verify=local_ssl_context)
 
-            download_and_extract_template(project_path, selected_ai, selected_script, here, verbose=False, tracker=tracker, client=local_client, debug=debug, github_token=github_token)
+            # Download and extract templates for each selected AI assistant
+            for idx, selected_ai in enumerate(selected_ais):
+                # Update tracker keys for this specific AI assistant
+                ai_tracker_keys = {
+                    "fetch": f"fetch-{selected_ai}",
+                    "download": f"download-{selected_ai}",
+                    "extract": f"extract-{selected_ai}",
+                }
+
+                # Create a mini tracker wrapper that maps generic keys to AI-specific keys
+                class AISpecificTracker:
+                    def __init__(self, base_tracker, key_map):
+                        self.base_tracker = base_tracker
+                        self.key_map = key_map
+
+                    def add(self, key, label):
+                        mapped_key = self.key_map.get(key, key)
+                        self.base_tracker.add(mapped_key, label)
+
+                    def start(self, key, detail=""):
+                        mapped_key = self.key_map.get(key, key)
+                        self.base_tracker.start(mapped_key, detail)
+
+                    def complete(self, key, detail=""):
+                        mapped_key = self.key_map.get(key, key)
+                        self.base_tracker.complete(mapped_key, detail)
+
+                    def error(self, key, detail=""):
+                        mapped_key = self.key_map.get(key, key)
+                        self.base_tracker.error(mapped_key, detail)
+
+                ai_tracker = AISpecificTracker(tracker, ai_tracker_keys)
+
+                # For first AI, create the project; for subsequent ones, merge into existing
+                is_merge = idx > 0 or here
+                download_and_extract_template(
+                    project_path,
+                    selected_ai,
+                    selected_script,
+                    is_merge,
+                    verbose=False,
+                    tracker=ai_tracker,
+                    client=local_client,
+                    debug=debug,
+                    github_token=github_token
+                )
 
             ensure_executable_scripts(project_path, tracker=tracker)
 
@@ -1103,13 +1231,18 @@ def init(
         )
         console.print(git_error_panel)
 
-    # Agent folder security notice
-    agent_config = AGENT_CONFIG.get(selected_ai)
-    if agent_config:
-        agent_folder = agent_config["folder"]
+    # Agent folder security notice for all selected agents
+    agent_folders = []
+    for selected_ai in selected_ais:
+        agent_config = AGENT_CONFIG.get(selected_ai)
+        if agent_config:
+            agent_folders.append(agent_config["folder"])
+
+    if agent_folders:
+        folders_text = ", ".join([f"[cyan]{folder}[/cyan]" for folder in agent_folders])
         security_notice = Panel(
             f"Some agents may store credentials, auth tokens, or other identifying and private artifacts in the agent folder within your project.\n"
-            f"Consider adding [cyan]{agent_folder}[/cyan] (or parts of it) to [cyan].gitignore[/cyan] to prevent accidental credential leakage.",
+            f"Consider adding {folders_text} (or parts of them) to [cyan].gitignore[/cyan] to prevent accidental credential leakage.",
             title="[yellow]Agent Folder Security[/yellow]",
             border_style="yellow",
             padding=(1, 2)
@@ -1126,18 +1259,18 @@ def init(
         step_num = 2
 
     # Add Codex-specific setup step if needed
-    if selected_ai == "codex":
+    if "codex" in selected_ais:
         codex_path = project_path / ".codex"
         quoted_path = shlex.quote(str(codex_path))
         if os.name == "nt":  # Windows
             cmd = f"setx CODEX_HOME {quoted_path}"
         else:  # Unix-like systems
             cmd = f"export CODEX_HOME={quoted_path}"
-        
+
         steps_lines.append(f"{step_num}. Set [cyan]CODEX_HOME[/cyan] environment variable before running Codex: [cyan]{cmd}[/cyan]")
         step_num += 1
 
-    steps_lines.append(f"{step_num}. Start using slash commands with your AI agent:")
+    steps_lines.append(f"{step_num}. Start using slash commands with your AI agent(s):")
 
     steps_lines.append("   2.1 [cyan]/personas.constitution[/] - Establish project principles")
     steps_lines.append("   2.2 [cyan]/personas.specify[/] - Create baseline specification")

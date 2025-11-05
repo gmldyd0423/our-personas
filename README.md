@@ -198,7 +198,7 @@ personas init --here --ai copilot
 
 # Force merge into current (non-empty) directory without confirmation
 personas init . --force --ai copilot
-# or 
+# or
 personas init --here --force --ai copilot
 
 # Skip git initialization
@@ -329,7 +329,7 @@ personas init . --force
 personas init --here --force
 ```
 
-You will be prompted to select the AI agent you are using. You can also proactively personas it directly in the terminal:
+You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
 
 ```bash
 personas init <project_name> --ai claude
