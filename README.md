@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./media/logo_small.webp" alt="Our Personas Logo"/>
     <h1>🌱 Our Personas</h1>
-    <h3><em>Our Personas - Organizing Us Rapidly with Personas: Powering Team Synergy and Project Velocity.</em></h3>
+    <h3><em>Organizing Us Rapidly: Powering Team Synergy and Project Velocity.</em></h3>
 </div>
 
 <p align="center">
@@ -37,7 +37,7 @@
 
 ## 🤔 What is Spec-Driven Development?
 
-Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
+Spec-Driven Development (SDD) reverses the traditional coding hierarchy. Instead of specifications being mere guides, they become **executable assets** that directly generate working implementations. Code no longer precedes the spec; the spec is the implementation.
 
 ## ⚡ Get Started
 
