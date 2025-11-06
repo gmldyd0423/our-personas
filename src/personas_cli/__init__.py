@@ -324,16 +324,16 @@ def select_with_arrows(options: dict, prompt_text: str = "Select an option", def
                     key = get_key()
                     if key == 'up':
                         selected_index = (selected_index - 1) % len(option_keys)
+                        live.update(create_selection_panel(), refresh=True)
                     elif key == 'down':
                         selected_index = (selected_index + 1) % len(option_keys)
+                        live.update(create_selection_panel(), refresh=True)
                     elif key == 'enter':
                         selected_key = option_keys[selected_index]
                         break
                     elif key == 'escape':
                         console.print("\n[yellow]Selection cancelled[/yellow]")
                         raise typer.Exit(1)
-
-                    live.update(create_selection_panel(), refresh=True)
 
                 except KeyboardInterrupt:
                     console.print("\n[yellow]Selection cancelled[/yellow]")
@@ -395,21 +395,22 @@ def multi_select_with_arrows(options: dict, prompt_text: str = "Select options",
                     key = get_key()
                     if key == 'up':
                         selected_index = (selected_index - 1) % len(option_keys)
+                        live.update(create_selection_panel(), refresh=True)
                     elif key == 'down':
                         selected_index = (selected_index + 1) % len(option_keys)
+                        live.update(create_selection_panel(), refresh=True)
                     elif key == ' ':  # Spacebar to toggle selection
                         current_key = option_keys[selected_index]
                         if current_key in selected_keys:
                             selected_keys.remove(current_key)
                         else:
                             selected_keys.add(current_key)
+                        live.update(create_selection_panel(), refresh=True)
                     elif key == 'enter':
                         break
                     elif key == 'escape':
                         console.print("\n[yellow]Selection cancelled[/yellow]")
                         raise typer.Exit(1)
-
-                    live.update(create_selection_panel(), refresh=True)
 
                 except KeyboardInterrupt:
                     console.print("\n[yellow]Selection cancelled[/yellow]")
