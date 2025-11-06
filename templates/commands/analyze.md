@@ -23,9 +23,9 @@ Identify inconsistencies, duplications, ambiguities, and underspecified items ac
 
 **Constitution Authority**: The project constitution (`/memory/constitution.md`) is **non-negotiable** within this analysis scope. Constitution conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit constitution update outside `/personas.analyze`.
 
-**Architecture Authority**: The system architecture (`/memory/architecture.md`) defines the **technical framework** and component boundaries. Conflicts with architectural decisions (component design, communication patterns, technology stack) are HIGH severity and require alignment.
+**Architecture Authority**: The system architecture (`/d-docs/architecture.md`) defines the **technical framework** and component boundaries. Conflicts with architectural decisions (component design, communication patterns, technology stack) are HIGH severity and require alignment.
 
-**Standards Authority**: The coding standards (`/memory/standards.md`) define **implementation practices** and quality requirements. Violations of mandatory standards (testing coverage, security practices, tooling) are MEDIUM-HIGH severity and require compliance.
+**Standards Authority**: The coding standards (`/d-docs/standards.md`) define **implementation practices** and quality requirements. Violations of mandatory standards (testing coverage, security practices, tooling) are MEDIUM-HIGH severity and require compliance.
 
 ## Execution Steps
 
@@ -73,7 +73,7 @@ Load only the minimal necessary context from each artifact:
 
 **From architecture (if exists):**
 
-- Load `/memory/architecture.md` for:
+- Load `/d-docs/architecture.md` for:
   - System components and their responsibilities
   - Technology stack and versions
   - Communication patterns between components
@@ -83,7 +83,7 @@ Load only the minimal necessary context from each artifact:
 
 **From standards (if exists):**
 
-- Load `/memory/standards.md` for:
+- Load `/d-docs/standards.md` for:
   - Testing requirements (frameworks, coverage targets, test types)
   - Security practices (authentication, authorization, data validation)
   - Code quality standards (linters, formatters, complexity limits)

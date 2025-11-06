@@ -15,8 +15,8 @@
 
 **User Workflows**: [quickstart.md - User scenarios, workflows, steps]
 **Implementation Plan**: [plan.md - Technical context, constraints, platform]
-**Architecture**: [/memory/architecture.md - Deployment environment, infrastructure]
-**Standards**: [/memory/standards.md - E2E test framework, practices]
+**Architecture**: [/d-docs/architecture.md - Deployment environment, infrastructure]
+**Standards**: [/d-docs/standards.md - E2E test framework, practices]
 
 ### User Workflows Inventory
 
@@ -280,8 +280,8 @@
 
 - **User Workflows**: `/specs/[###-feature-name]/quickstart.md`
 - **Implementation Plan**: `/specs/[###-feature-name]/plan.md`
-- **Architecture**: `/memory/architecture.md`
-- **Standards**: `/memory/standards.md`
+- **Architecture**: `/d-docs/architecture.md`
+- **Standards**: `/d-docs/standards.md`
 
 ### Test Coverage Matrix
 

@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-You are updating the project coding standard at `/memory/standards.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[PROJECT_NAME]`, `[FRONTEND_FRAMEWORK]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for full-stack development, and (c) ensure consistency with the project constitution.
+You are updating the project coding standard at `/d-docs/standards.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[PROJECT_NAME]`, `[FRONTEND_FRAMEWORK]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for full-stack development, and (c) ensure consistency with the project constitution.
 
 Follow this execution flow:
 
-1. **Load the existing coding standard template** at `/memory/standards.md`.
+1. **Load the existing coding standard template** at `/d-docs/standards.md`.
    - Identify every placeholder token of the form `[ALL_CAPS_IDENTIFIER]`.
    - Note: This template is designed for full-stack development covering frontend, backend, testing, security, performance, DevOps, and database standards.
 
@@ -162,7 +162,7 @@ Follow this execution flow:
    - Security standards meet industry best practices
    - Performance targets are realistic for the project type
 
-9. **Write the completed coding standard** back to `/memory/standards.md` (overwrite).
+9. **Write the completed coding standard** back to `/d-docs/standards.md` (overwrite).
 
 10. **Output a final summary to the user** with:
     - New version and bump rationale

@@ -3,7 +3,7 @@
 **Purpose**: Validate architecture completeness and quality before implementation planning
 **Created**: [DATE]
 **Product Level**: [Mock-up/PoC/MVP/Production]
-**Architecture Document**: /memory/architecture.md
+**Architecture Document**: /d-docs/architecture.md
 
 <!-- 
   ============================================================================

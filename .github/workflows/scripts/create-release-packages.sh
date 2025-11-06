@@ -34,7 +34,8 @@ rewrite_paths() {
   sed -E \
     -e 's@(/?)memory/@.personas/memory/@g' \
     -e 's@(/?)scripts/@.personas/scripts/@g' \
-    -e 's@(/?)templates/@.personas/templates/@g'
+    -e 's@(/?)templates/@.personas/templates/@g' \
+    -e 's@(/?)d-docs/@d-docs/@g'
 }
 
 generate_commands() {
@@ -131,6 +132,9 @@ build_variant() {
   fi
   
   [[ -d templates ]] && { mkdir -p "$SPEC_DIR/templates"; find templates -type f -not -path "templates/commands/*" -not -name "vscode-settings.json" -exec cp --parents {} "$SPEC_DIR"/ \; ; echo "Copied templates -> .personas/templates"; }
+  
+  # Copy d-docs folder to the root of the release package (not inside .personas)
+  [[ -d d-docs ]] && { cp -r d-docs "$base_dir/"; echo "Copied d-docs -> root"; }
   
   # NOTE: We substitute {ARGS} internally. Outward tokens differ intentionally:
   #   * Markdown/prompt (claude, copilot, cursor-agent, opencode): $ARGUMENTS

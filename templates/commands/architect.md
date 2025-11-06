@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-You are updating the software architecture document at `/memory/architecture.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[System Name]`, `[briefly describe the system's purpose]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for the project architecture, and (c) ensure consistency with the project constitution and coding standards.
+You are updating the software architecture document at `/d-docs/architecture.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[System Name]`, `[briefly describe the system's purpose]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for the project architecture, and (c) ensure consistency with the project constitution and coding standards.
 
 Follow this execution flow:
 
-1. **Load the existing architecture template** at `/memory/architecture.md`.
+1. **Load the existing architecture template** at `/d-docs/architecture.md`.
    - Identify every placeholder token of the form `[ALL_CAPS_IDENTIFIER]` or `[descriptive text]`.
    - Note: This template follows ISO/IEC/IEEE 42010:2011 standards for architecture description.
 
@@ -94,7 +94,7 @@ Follow this execution flow:
 
 5. **Consistency with other project documents**:
    - Read `/memory/constitution.md` if it exists
-   - Read `/memory/standards.md` if it exists
+   - Read `/d-docs/standards.md` if it exists
    - Ensure architecture aligns with constitutional principles
    - Ensure architecture supports coding standards
    - Flag any conflicts between documents
@@ -191,7 +191,7 @@ Follow this execution flow:
    - Diagrams referenced or described
    - Alternative approaches and trade-offs documented
 
-10. **Write the completed architecture document** back to `/memory/architecture.md` (overwrite).
+10. **Write the completed architecture document** back to `/d-docs/architecture.md` (overwrite).
 
 11. **Architecture Quality Validation**: After writing the initial architecture document, validate it against quality criteria:
 

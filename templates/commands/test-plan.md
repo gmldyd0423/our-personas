@@ -17,7 +17,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for IMPL_PLAN, TEST_PLAN, SPECS_DIR, BRANCH. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
-2. **Load context**: Read IMPL_PLAN, `quickstart.md`, `/memory/architecture.md`, and `/memory/standards.md`. Load TEST_PLAN template (already copied).
+2. **Load context**: Read IMPL_PLAN, `quickstart.md`, `/d-docs/architecture.md`, and `/d-docs/standards.md`. Load TEST_PLAN template (already copied).
 
 3. **Verify prerequisites**: Ensure implementation plan and quickstart exist:
    - `plan.md` exists with technical context

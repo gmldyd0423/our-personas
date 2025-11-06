@@ -288,8 +288,8 @@ All E2E test artifacts are stored in: `/specs/[###-feature-name]/test-artifacts/
 - **Test Plan**: `/specs/[###-feature-name]/test-plan.md`
 - **User Workflows**: `/specs/[###-feature-name]/quickstart.md`
 - **Implementation Plan**: `/specs/[###-feature-name]/plan.md`
-- **Architecture**: `/memory/architecture.md`
-- **Standards**: `/memory/standards.md`
+- **Architecture**: `/d-docs/architecture.md`
+- **Standards**: `/d-docs/standards.md`
 
 ### Test Execution Environment
 
