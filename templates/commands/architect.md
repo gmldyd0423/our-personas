@@ -196,7 +196,7 @@ Follow this execution flow:
 11. **Architecture Quality Validation**: After writing the initial architecture document, validate it against quality criteria:
 
    a. **Create Architecture Quality Checklist**:
-      - Copy `templates/checklist-arch-template.md` to `/memory/checklists/architecture.md`
+      - Copy `templates/checklist-arch-template.md` to `/d-docs/checklists/architecture.md`
       - Replace template placeholders:
         - `[DATE]` → Current date
         - `[Mock-up/PoC/MVP/Production]` → Actual product level from architecture document
@@ -221,7 +221,7 @@ Follow this execution flow:
            - Warn user about incomplete areas
            - Suggest specific improvements needed
 
-   d. **Update Checklist**: After each validation iteration, update `/memory/checklists/architecture.md` with:
+   d. **Update Checklist**: After each validation iteration, update `/d-docs/checklists/architecture.md` with:
       - Mark items as checked `[x]` or unchecked `[ ]`
       - Fill in the "Validation Iterations" section with:
         - Timestamp for the iteration
@@ -347,7 +347,7 @@ The architecture document is complete when:
 
 After completing the architecture document and checklist validation:
 
-1. **Review checklist results**: Check `/memory/checklists/architecture.md` for any remaining issues
+1. **Review checklist results**: Check `/d-docs/checklists/architecture.md` for any remaining issues
 2. **Commit architecture**: Use suggested commit message to save the architecture document
 3. **Establish coding standards**: Run `/personas.standardize` to create technology-specific coding standards that align with this architecture
    - This ensures consistent development practices across all features
