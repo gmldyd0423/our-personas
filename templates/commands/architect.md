@@ -353,14 +353,13 @@ After completing the architecture document and checklist validation:
    - This ensures consistent development practices across all features
    - Standards will be based on the technology stack defined in this architecture
    - Required before running `/personas.plan` to ensure implementation plans follow established standards
-4. **Create architectural diagrams**: Use tools like Mermaid, Draw.io, or Lucidchart (can be done in parallel with standards)
-5. **Review with stakeholders**: Get feedback from team, product, and ops
-6. **Document ADRs**: Create Architecture Decision Records for key choices
-7. **Update related docs**: Ensure README, design docs align with architecture
-8. **Ready for feature work**: After standards are established, proceed to `/personas.plan` and `/personas.tasks` for feature development
-9. **Set up infrastructure**: Provision cloud resources, containers, etc. (after planning)
-10. **Establish monitoring**: Set up observability for quality attribute tracking
-11. **Create runbooks**: Document operational procedures for the architecture
+4. **Review with stakeholders**: Get feedback from team, product, and ops
+5. **Document ADRs**: Create Architecture Decision Records for key choices
+6. **Update related docs**: Ensure README, design docs align with architecture
+7. **Ready for feature work**: After standards are established, proceed to `/personas.plan` and `/personas.tasks` for feature development
+8. **Set up infrastructure**: Provision cloud resources, containers, etc. (after planning)
+9. **Establish monitoring**: Set up observability for quality attribute tracking
+10. **Create runbooks**: Document operational procedures for the architecture
 
 **Complete workflow context**:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.
