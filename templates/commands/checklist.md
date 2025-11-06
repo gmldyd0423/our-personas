@@ -324,10 +324,11 @@ Your response **MUST** suggest the user's next step, following the sequential or
 4. /personas.architect     → Define system architecture
 5. /personas.standardize   → Establish coding standards
 6. /personas.plan          → Plan feature implementation with design
-7. /personas.test-plan     → Generate comprehensive test plan
+7. /personas.test-plan     → Generate E2E test plan
 8. /personas.tasks         → Break down into tasks
 9. /personas.analyze       → Analyze cross-artifact consistency
 10. /personas.implement    → Execute implementation
+11. /personas.test         → Execute E2E tests and generate report
 ```
 
 **Note**: Checklists validate quality at each stage before proceeding. You can generate multiple checklists for different aspects (requirements, design, testing, security, etc.) at appropriate workflow stages.

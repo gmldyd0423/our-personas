@@ -131,7 +131,15 @@ Use the **`/personas.plan`** command to provide your tech stack and architecture
 /personas.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
-### 8. Break down into tasks
+### 8. Generate E2E test plan
+
+Use **`/personas.test-plan`** to create a comprehensive E2E test plan based on user workflows from your quickstart guide.
+
+```bash
+/personas.test-plan
+```
+
+### 9. Break down into tasks
 
 Use **`/personas.tasks`** to create an actionable task list from your implementation plan.
 
@@ -139,7 +147,7 @@ Use **`/personas.tasks`** to create an actionable task list from your implementa
 /personas.tasks
 ```
 
-### 9. Analyze for consistency (optional but recommended)
+### 10. Analyze for consistency (optional but recommended)
 
 Use **`/personas.analyze`** to validate consistency across all artifacts before implementation.
 
@@ -147,12 +155,20 @@ Use **`/personas.analyze`** to validate consistency across all artifacts before 
 /personas.analyze
 ```
 
-### 10. Execute implementation
+### 11. Execute implementation
 
 Use **`/personas.implement`** to execute all tasks and build your feature according to the plan.
 
 ```bash
 /personas.implement
+```
+
+### 12. Execute E2E tests
+
+Use **`/personas.test`** to run E2E tests according to your test plan and generate a comprehensive test report.
+
+```bash
+/personas.test
 ```
 
 For detailed step-by-step instructions, see our [comprehensive guide](./spec-driven.md).
@@ -275,9 +291,11 @@ Essential commands for the Spec-Driven Development workflow (in recommended orde
 | `/personas.architect`     | Define system architecture, components, and infrastructure            | After clarify: establish technical framework |
 | `/personas.standardize`   | Establish coding standards, testing requirements, and quality practices | After architect: define implementation rules |
 | `/personas.plan`          | Create technical implementation plans with your chosen tech stack     | After standards: plan feature implementation |
-| `/personas.tasks`         | Generate actionable task lists for implementation                     | After plan: break down into steps |
+| `/personas.test-plan`     | Generate E2E test plan from user workflows in quickstart.md          | After plan: define E2E test scenarios |
+| `/personas.tasks`         | Generate actionable task lists for implementation                     | After test-plan: break down into steps |
 | `/personas.analyze`       | Cross-artifact consistency & coverage analysis                        | Optional: after tasks, before implement |
-| `/personas.implement`     | Execute all tasks to build the feature according to the plan         | Final step: build the feature |
+| `/personas.implement`     | Execute all tasks to build the feature according to the plan         | After analyze: build the feature |
+| `/personas.test`          | Execute E2E tests and generate comprehensive test report              | After implement: validate user workflows |
 
 #### Enhancement Commands
 
@@ -408,7 +426,7 @@ personas init <project_name> --ai claude --ignore-agent-tools
 
 Go to the project folder and run your AI agent. In our example, we're using `claude`.
 
-You will know that things are configured correctly if you see the `/personas.constitution`, `/personas.specify`, `/personas.plan`, `/personas.tasks`, and `/personas.implement` commands available.
+You will know that things are configured correctly if you see the `/personas.constitution`, `/personas.specify`, `/personas.plan`, `/personas.test-plan`, `/personas.tasks`, `/personas.test`, and `/personas.implement` commands available.
 
 The first step should be establishing your project's governing principles using the `/personas.constitution` command. This helps ensure consistent decision-making throughout all subsequent development phases:
 
@@ -628,9 +646,27 @@ You can also ask Claude Code (if you have the [GitHub CLI](https://docs.github.c
 >[!NOTE]
 >Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the [constitution](base/memory/constitution.md) as the foundational piece that it must adhere to when establishing the plan.
 
-### **STEP 6:** Generate task breakdown with /personas.tasks
+### **STEP 6:** Generate E2E test plan with /personas.test-plan
 
-With the implementation plan validated, you can now break down the plan into specific, actionable tasks that can be executed in the correct order. Use the `/personas.tasks` command to automatically generate a detailed task breakdown from your implementation plan:
+With the implementation plan validated, generate a comprehensive E2E test plan based on user workflows. Use the `/personas.test-plan` command to automatically create test scenarios from your quickstart guide:
+
+```text
+/personas.test-plan
+```
+
+This step creates a `test-plan.md` file in your feature specification directory that contains:
+
+- **User workflow analysis** - Extracts and analyzes user workflows from quickstart.md
+- **E2E test strategy** - Defines E2E test framework, browser coverage, and execution approach (from standards.md)
+- **E2E test scenarios** - Generates test cases for each user workflow including happy paths, edge cases, error handling, and alternative paths
+- **Test data requirements** - Defines user accounts, fixtures, and mock services needed for testing
+- **Test environment requirements** - Specifies infrastructure, browser matrix, and CI/CD integration (from architecture.md)
+
+The generated test-plan.md ensures comprehensive E2E testing coverage aligned with your architecture and standards.
+
+### **STEP 7:** Generate task breakdown with /personas.tasks
+
+With the test plan in place, you can now break down the implementation plan into specific, actionable tasks that can be executed in the correct order. Use the `/personas.tasks` command to automatically generate a detailed task breakdown from your implementation plan:
 
 ```text
 /personas.tasks
@@ -647,7 +683,7 @@ This step creates a `tasks.md` file in your feature specification directory that
 
 The generated tasks.md provides a clear roadmap for the `/personas.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
 
-### **STEP 7:** Implementation
+### **STEP 8:** Implementation
 
 Once ready, use the `/personas.implement` command to execute your implementation plan:
 
@@ -667,6 +703,28 @@ The `/personas.implement` command will:
 >The AI agent will execute local CLI commands (such as `dotnet`, `npm`, etc.) - make sure you have the required tools installed on your machine.
 
 Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.
+
+### **STEP 9:** Execute E2E tests with /personas.test
+
+After implementation is complete, run E2E tests to validate user workflows. Use the `/personas.test` command to execute tests according to your test plan:
+
+```text
+/personas.test
+```
+
+The `/personas.test` command will:
+
+- Validate that the test environment matches test-plan.md requirements
+- Execute E2E tests for all user workflows defined in test-plan.md
+- Capture test artifacts (screenshots, videos, traces) for failures
+- Generate a comprehensive test report in `test-report.md` with:
+  - Test results by workflow (pass/fail status)
+  - Browser compatibility issues
+  - Flaky test identification
+  - Performance issues in user workflows
+  - Recommendations for fixes and improvements
+
+The test report provides complete traceability from test-plan.md to actual test execution results, helping you identify and fix issues before deployment.
 
 </details>
 
