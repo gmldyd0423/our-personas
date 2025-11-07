@@ -1,6 +1,6 @@
-# Our Personas
+# 🌿 Our Personas - Organizing Us Rapidly
 
-*Organizing Us Rapidly to speed-up software development.*
+*Powering Team Synergy and Project Velocity.*
 
 **An effort to allow organizations to focus on product scenarios rather than writing undifferentiated code with the help of Spec-Driven Development.**
 

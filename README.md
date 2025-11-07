@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./media/logo_small.webp" alt="Our Personas Logo"/>
-    <h1>🌱 Our Personas - Organizing Us Rapidly</h1>
+    <h1>🌿 Our Personas - Organizing Us Rapidly</h1>
     <h3><em>Powering Team Synergy and Project Velocity.</em></h3>
 </div>
 
@@ -853,7 +853,7 @@ For support, please open a [GitHub issue](https://github.com/dauquangthanh/our-p
 
 ## 🙏 Acknowledgements
 
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
+This project is heavily influenced by and based on the work of [GitHub Spec-Kit](https://github.com/github/spec-kit).
 
 ## 📄 License
 
