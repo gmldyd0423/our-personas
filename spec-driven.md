@@ -423,6 +423,7 @@ This prevents common failures:
 - ✅ Each step builds on validated foundations
 
 The workflow ensures that:
+
 - **Principles precede decisions**: Constitution defines "why" before any "how"
 - **Architecture precedes implementation**: System design guides feature development
 - **Standards precede coding**: Consistent practices applied uniformly
@@ -441,6 +442,7 @@ The feature specification template explicitly instructs:
 This constraint forces the LLM to maintain proper abstraction levels. When an LLM might naturally jump to "implement using React with Redux," the template keeps it focused on "users need real-time updates of their data." This separation ensures specifications remain stable even as implementation technologies change.
 
 The architecture command then bridges the gap:
+
 - Specification stays technology-agnostic
 - Architecture defines system-level technology choices
 - Standards establish implementation practices
@@ -455,11 +457,13 @@ Every decision in architecture, standards, plan, and implementation must align w
 ```
 
 For example, if the constitution mandates:
+
 - **Article I: Library-First Principle** → Plan must structure features as libraries
 - **Article III: Test-First Imperative** → Tasks must include tests before implementation
 - **Article VII: Simplicity Gate** → Architecture must justify any complexity beyond 3 projects
 
 The workflow automatically enforces these principles:
+
 - Architecture checklist validates constitutional compliance
 - Plan references constitutional articles for decisions
 - Tasks follow test-first mandate from constitution
