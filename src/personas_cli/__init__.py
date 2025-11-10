@@ -127,7 +127,7 @@ AGENT_CONFIG = {
         "requires_cli": True,
     },
     "codebuddy": {
-        "name": "CodeBuddy",
+        "name": "CodeBuddy CLI",
         "folder": ".codebuddy/",
         "install_url": "https://www.codebuddy.ai/cli",
         "requires_cli": True,
@@ -1275,11 +1275,15 @@ def init(
 
     steps_lines.append(f"{step_num}. Start using slash commands with your AI agent(s):")
 
-    steps_lines.append("   2.1 [cyan]/personas.constitution[/] - Establish project principles")
+    steps_lines.append("   2.1 [cyan]/personas.regulate[/] - Establish project ground rules")
     steps_lines.append("   2.2 [cyan]/personas.specify[/] - Create baseline specification")
-    steps_lines.append("   2.3 [cyan]/personas.plan[/] - Create implementation plan")
-    steps_lines.append("   2.4 [cyan]/personas.tasks[/] - Generate actionable tasks")
-    steps_lines.append("   2.5 [cyan]/personas.implement[/] - Execute implementation")
+    steps_lines.append("   2.3 [cyan]/personas.architect[/] - Compose software architecture design")
+    steps_lines.append("   2.4 [cyan]/personas.standardize[/] - Develop project coding standards")
+    steps_lines.append("   2.5 [cyan]/personas.design[/] - Design the implementation plan")
+    steps_lines.append("   2.6 [cyan]/personas.design-test[/] - Build E2E test specification")
+    steps_lines.append("   2.7 [cyan]/personas.taskify[/] - Generate actionable tasks")
+    steps_lines.append("   2.8 [cyan]/personas.implement[/] - Execute implementation")
+    steps_lines.append("   2.9 [cyan]/personas.test[/] - Perform E2E testing")
 
     steps_panel = Panel("\n".join(steps_lines), title="Next Steps", border_style="cyan", padding=(1,2))
     console.print()
@@ -1288,9 +1292,10 @@ def init(
     enhancement_lines = [
         "Optional commands that you can use for your specs [bright_black](improve quality & confidence)[/bright_black]",
         "",
-        f"○ [cyan]/personas.clarify[/] [bright_black](optional)[/bright_black] - Ask structured questions to de-risk ambiguous areas before planning (run before [cyan]/personas.plan[/] if used)",
-        f"○ [cyan]/personas.analyze[/] [bright_black](optional)[/bright_black] - Cross-artifact consistency & alignment report (after [cyan]/personas.tasks[/], before [cyan]/personas.implement[/])",
-        f"○ [cyan]/personas.checklist[/] [bright_black](optional)[/bright_black] - Generate quality checklists to validate requirements completeness, clarity, and consistency (after [cyan]/personas.plan[/])"
+        f"○ [cyan]/personas.clarify[/] [bright_black](optional)[/bright_black] - Ask structured questions to de-risk ambiguous areas before planning (run before [cyan]/personas.design[/] if used)",
+        f"○ [cyan]/personas.analyze[/] [bright_black](optional)[/bright_black] - Cross-artifact consistency & alignment report (after [cyan]/personas.taskify[/], before [cyan]/personas.implement[/])",
+        f"○ [cyan]/personas.validate-specs[/] [bright_black](optional)[/bright_black] - Generate quality checklists to validate requirements completeness, clarity, and consistency (after [cyan]/personas.design[/])",
+        f"○ [cyan]/personas.validate-arch[/] [bright_black](optional)[/bright_black] - Generate quality checklists to validate architecture design documentation (after [cyan]/personas.architect[/])"
     ]
     enhancements_panel = Panel("\n".join(enhancement_lines), title="Enhancement Commands", border_style="cyan", padding=(1,2))
     console.print()

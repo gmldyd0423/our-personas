@@ -85,10 +85,10 @@ uvx --from git+https://github.com/dauquangthanh/our-personas.git personas init <
 
 Launch your AI assistant in the project directory. The `/personas.*` commands are available in the assistant.
 
-Use the **`/personas.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
+Use the **`/personas.regulate`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
 
 ```bash
-/personas.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
+/personas.regulate Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
 ```
 
 ### 3. Define system overview (recommended for new projects)
@@ -165,26 +165,26 @@ Use **`/personas.standardize`** to define coding practices, testing requirements
 
 ### 7. Create a technical implementation plan
 
-Use the **`/personas.plan`** command to provide your tech stack and architecture choices.
+Use the **`/personas.design`** command to provide your tech stack and architecture choices.
 
 ```bash
-/personas.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
+/personas.design The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
-### 8. Generate E2E test plan
+### 8. Generate E2E test spec
 
-Use **`/personas.test-plan`** to create a comprehensive E2E test plan based on user workflows from your quickstart guide.
+Use **`/personas.design-test`** to create a comprehensive E2E test spec based on user workflows from your quickstart guide.
 
 ```bash
-/personas.test-plan
+/personas.design-test
 ```
 
 ### 9. Break down into tasks
 
-Use **`/personas.tasks`** to create an actionable task list from your implementation plan.
+Use **`/personas.taskify`** to create an actionable task list from your implementation plan.
 
 ```bash
-/personas.tasks
+/personas.taskify
 ```
 
 ### 10. Analyze for consistency (optional but recommended)
@@ -205,7 +205,7 @@ Use **`/personas.implement`** to execute all tasks and build your feature accord
 
 ### 12. Execute E2E tests
 
-Use **`/personas.test`** to run E2E tests according to your test plan and generate a comprehensive test report.
+Use **`/personas.test`** to run E2E tests according to your test spec and generate a comprehensive test report.
 
 ```bash
 /personas.test
@@ -219,20 +219,20 @@ Our Personas supports **multiple AI agents simultaneously**. You can select one 
 
 | Agent                                                     | Support | Notes                                             |
 |-----------------------------------------------------------|---------|---------------------------------------------------|
-| [Claude Code](https://www.anthropic.com/claude-code)      | ✅ |                                                   |
-| [GitHub Copilot](https://code.visualstudio.com/)          | ✅ |                                                   |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | ✅ |                                                   |
-| [Cursor](https://cursor.sh/)                              | ✅ |                                                   |
-| [Qwen Code](https://github.com/QwenLM/qwen-code)          | ✅ |                                                   |
-| [opencode](https://opencode.ai/)                          | ✅ |                                                   |
-| [Windsurf](https://windsurf.com/)                         | ✅ |                                                   |
-| [Kilo Code](https://github.com/Kilo-Org/kilocode)         | ✅ |                                                   |
-| [Auggie CLI](https://docs.augmentcode.com/cli/overview)   | ✅ |                                                   |
-| [CodeBuddy CLI](https://www.codebuddy.ai/cli)             | ✅ |                                                   |
-| [Roo Code](https://roocode.com/)                          | ✅ |                                                   |
-| [Codex CLI](https://github.com/openai/codex)              | ✅ |                                                   |
 | [Amazon Q Developer CLI](https://aws.amazon.com/developer/learning/q-developer-cli/) | ⚠️ | Amazon Q Developer CLI [does not support](https://github.com/aws/amazon-q-developer-cli/issues/3064) custom arguments for slash commands. |
 | [Amp](https://ampcode.com/) | ✅ | |
+| [Auggie CLI](https://docs.augmentcode.com/cli/overview)   | ✅ |                                                   |
+| [Claude Code](https://www.anthropic.com/claude-code)      | ✅ |                                                   |
+| [CodeBuddy CLI](https://www.codebuddy.ai/cli)             | ✅ |                                                   |
+| [Codex CLI](https://github.com/openai/codex)              | ✅ |                                                   |
+| [Cursor](https://cursor.sh/)                              | ✅ |                                                   |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | ✅ |                                                   |
+| [GitHub Copilot](https://code.visualstudio.com/)          | ✅ |                                                   |
+| [Kilo Code](https://github.com/Kilo-Org/kilocode)         | ✅ |                                                   |
+| [opencode](https://opencode.ai/)                          | ✅ |                                                   |
+| [Qwen Code](https://github.com/QwenLM/qwen-code)          | ✅ |                                                   |
+| [Roo Code](https://roocode.com/)                          | ✅ |                                                   |
+| [Windsurf](https://windsurf.com/)                         | ✅ |                                                   |
 
 **Multi-Agent Support**: When you run `personas init`, you can select multiple AI agents using the interactive menu (Space to toggle, Enter to confirm). The CLI will download and merge templates for all selected agents, allowing you to switch between different AI assistants seamlessly within the same project.
 
@@ -325,14 +325,14 @@ Essential commands for the Spec-Driven Development workflow (in recommended orde
 
 | Command                  | Description                                                           | When to Use |
 |--------------------------|-----------------------------------------------------------------------|-------------|
-| `/personas.constitution`  | Create or update project governing principles and development guidelines | First step: establish project values |
-| `/personas.specify`       | Define what you want to build (requirements and user stories)        | After constitution: define features |
+| `/personas.regulate`     | Create or update project governing principles and development guidelines | First step: establish project values |
+| `/personas.specify`      | Define what you want to build (requirements and user stories)        | After ground rules: define features |
 | `/personas.clarify`       | Clarify underspecified areas through structured questioning           | Optional: after specify, before architect |
 | `/personas.architect`     | Define system architecture, components, and infrastructure            | After clarify: establish technical framework |
 | `/personas.standardize`   | Establish coding standards, testing requirements, and quality practices | After architect: define implementation rules |
-| `/personas.plan`          | Create technical implementation plans with your chosen tech stack     | After standards: plan feature implementation |
-| `/personas.test-plan`     | Generate E2E test plan from user workflows in quickstart.md          | After plan: define E2E test scenarios |
-| `/personas.tasks`         | Generate actionable task lists for implementation                     | After test-plan: break down into steps |
+| `/personas.design`          | Create technical implementation designs with your chosen tech stack     | After standards: design feature implementation |
+| `/personas.design-test`     | Generate E2E test spec from user workflows in quickstart.md          | After plan: define E2E test scenarios |
+| `/personas.taskify`         | Generate actionable task lists for implementation                     | After design-test: break down into steps |
 | `/personas.analyze`       | Cross-artifact consistency & coverage analysis                        | Optional: after tasks, before implement |
 | `/personas.implement`     | Execute all tasks to build the feature according to the plan         | After analyze: build the feature |
 | `/personas.test`          | Execute E2E tests and generate comprehensive test report              | After implement: validate user workflows |
@@ -343,13 +343,14 @@ Additional commands for improved quality and validation:
 
 | Command              | Description                                                           | When to Use |
 |----------------------|-----------------------------------------------------------------------|-------------|
-| `/personas.checklist` | Generate custom quality checklists for validating artifacts          | Any time: after specify, plan, or tasks |
+| `/personas.validate-specs` | Generate custom quality checklists for validating artifacts          | Any time: after specify, design, or tasks |
+| `/personas.validate-arch` | Generate custom quality checklists for validating architecture design | After architect, before standardize or design |
 
 ### Environment Variables
 
 | Variable         | Description                                                                                    |
 |------------------|------------------------------------------------------------------------------------------------|
-| `SPECIFY_FEATURE` | Override feature detection for non-Git repositories. Set to the feature directory name (e.g., `001-photo-albums`) to work on a specific feature when not using Git branches.<br/>**Must be set in the context of the agent you're working with prior to using `/personas.plan` or follow-up commands. |
+| `SPECIFY_FEATURE` | Override feature detection for non-Git repositories. Set to the feature directory name (e.g., `001-photo-albums`) to work on a specific feature when not using Git branches.<br/>**Must be set in the context of the agent you're working with prior to using `/personas.design` or follow-up commands. |
 
 ## 📚 Core Philosophy
 
@@ -466,15 +467,15 @@ personas init <project_name> --ai claude --ignore-agent-tools
 
 Go to the project folder and run your AI agent. In our example, we're using `claude`.
 
-You will know that things are configured correctly if you see the `/personas.constitution`, `/personas.specify`, `/personas.plan`, `/personas.test-plan`, `/personas.tasks`, `/personas.test`, and `/personas.implement` commands available.
+You will know that things are configured correctly if you see the `/personas.regulate`, `/personas.specify`, `/personas.design`, `/personas.design-test`, `/personas.taskify`, `/personas.test`, and `/personas.implement` commands available.
 
-The first step should be establishing your project's governing principles using the `/personas.constitution` command. This helps ensure consistent decision-making throughout all subsequent development phases:
+The first step should be establishing your project's governing principles using the `/personas.regulate` command. This helps ensure consistent decision-making throughout all subsequent development phases:
 
 ```text
-/personas.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
+/personas.regulate Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
 ```
 
-This step creates or updates the `.personas/memory/constitution.md` file with your project's foundational guidelines that the AI agent will reference during specification, planning, and implementation phases.
+This step creates or updates the `.personas/memory/ground-rules.md` file with your project's foundational guidelines that the AI agent will reference during specification, planning, and implementation phases.
 
 ### **STEP 2:** Create system overview (recommended for new projects)
 
@@ -550,18 +551,18 @@ At this stage, your project folder contents should resemble the following:
 ```text
 └── .personas
     ├── memory
-    │  └── constitution.md
+    │  └── ground-rules.md
     ├── scripts
     │  ├── check-prerequisites.sh
     │  ├── common.sh
     │  ├── create-new-feature.sh
-    │  ├── setup-plan.sh
+    │  ├── setup-design.sh
     │  └── update-agent-context.sh
     ├── specs
     │  └── 001-create-taskify
     │      └── spec.md
     └── templates
-        ├── plan-template.md
+        ├── design-template.md
         ├── spec-template.md
         └── tasks-template.md
 ```
@@ -656,7 +657,7 @@ The standards ensure consistent implementation quality across all features.
 
 ### **STEP 7:** Generate a plan
 
-You can now be specific about the tech stack and other technical requirements. You can use the `/personas.plan` command that is built into the project template with a prompt like this:
+You can now be specific about the tech stack and other technical requirements. You can use the `/personas.design` command that is built into the project template with a prompt like this:
 
 ```text
 We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
@@ -670,12 +671,12 @@ The output of this step will include a number of implementation detail documents
 .
 ├── CLAUDE.md
 ├── memory
-│  └── constitution.md
+│  └── ground-rules.md
 ├── scripts
 │  ├── check-prerequisites.sh
 │  ├── common.sh
 │  ├── create-new-feature.sh
-│  ├── setup-plan.sh
+│  ├── setup-design.sh
 │  └── update-claude-md.sh
 ├── specs
 │  └── 001-create-taskify
@@ -683,13 +684,13 @@ The output of this step will include a number of implementation detail documents
 │      │  ├── api-spec.json
 │      │  └── signalr-spec.md
 │      ├── data-model.md
-│      ├── plan.md
+│      ├── design.md
 │      ├── quickstart.md
 │      ├── research.md
 │      └── spec.md
 └── templates
     ├── CLAUDE-template.md
-    ├── plan-template.md
+    ├── design-template.md
     ├── spec-template.md
     └── tasks-template.md
 ```
@@ -738,17 +739,17 @@ This helps refine the implementation plan and helps you avoid potential blind sp
 You can also ask Claude Code (if you have the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli) installed) to go ahead and create a pull request from your current branch to `main` with a detailed description, to make sure that the effort is properly tracked.
 
 >[!NOTE]
->Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the [constitution](base/memory/constitution.md) as the foundational piece that it must adhere to when establishing the plan.
+>Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the [ground rules](base/memory/ground-rules.md) as the foundational piece that it must adhere to when establishing the plan.
 
-### **STEP 9:** Generate E2E test plan with /personas.test-plan
+### **STEP 9:** Generate E2E test spec with /personas.design-test
 
-With the implementation plan validated, generate a comprehensive E2E test plan based on user workflows. Use the `/personas.test-plan` command to automatically create test scenarios from your quickstart guide:
+With the implementation plan validated, generate a comprehensive E2E test spec based on user workflows. Use the `/personas.design-test` command to automatically create test scenarios from your quickstart guide:
 
 ```text
-/personas.test-plan
+/personas.design-test
 ```
 
-This step creates a `test-plan.md` file in your feature specification directory that contains:
+This step creates a `design-test.md` file in your feature specification directory that contains:
 
 - **User workflow analysis** - Extracts and analyzes user workflows from quickstart.md
 - **E2E test strategy** - Defines E2E test framework, browser coverage, and execution approach (from standards.md)
@@ -756,17 +757,17 @@ This step creates a `test-plan.md` file in your feature specification directory 
 - **Test data requirements** - Defines user accounts, fixtures, and mock services needed for testing
 - **Test environment requirements** - Specifies infrastructure, browser matrix, and CI/CD integration (from architecture.md)
 
-The generated test-plan.md ensures comprehensive E2E testing coverage aligned with your architecture and standards.
+The generated design-test.md ensures comprehensive E2E testing coverage aligned with your architecture and standards.
 
-### **STEP 10:** Generate task breakdown with /personas.tasks
+### **STEP 10:** Generate task breakdown with /personas.taskify
 
-With the test plan in place, you can now break down the implementation plan into specific, actionable tasks that can be executed in the correct order. Use the `/personas.tasks` command to automatically generate a detailed task breakdown from your implementation plan:
+With the test spec in place, you can now break down the implementation plan into specific, actionable tasks that can be executed in the correct order. Use the `/personas.taskify` command to automatically generate a detailed task breakdown from your implementation plan:
 
 ```text
-/personas.tasks
+/personas.taskify
 ```
 
-This step creates a `tasks.md` file in your feature specification directory that contains:
+This step creates a `taskify.md` file in your feature specification directory that contains:
 
 - **Task breakdown organized by user story** - Each user story becomes a separate implementation phase with its own set of tasks
 - **Dependency management** - Tasks are ordered to respect dependencies between components (e.g., models before services, services before endpoints)
@@ -775,7 +776,7 @@ This step creates a `tasks.md` file in your feature specification directory that
 - **Test-driven development structure** - If tests are requested, test tasks are included and ordered to be written before implementation
 - **Checkpoint validation** - Each user story phase includes checkpoints to validate independent functionality
 
-The generated tasks.md provides a clear roadmap for the `/personas.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
+The generated taskify.md provides a clear roadmap for the `/personas.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
 
 ### **STEP 11:** Implementation
 
@@ -787,8 +788,8 @@ Once ready, use the `/personas.implement` command to execute your implementation
 
 The `/personas.implement` command will:
 
-- Validate that all prerequisites are in place (constitution, spec, plan, and tasks)
-- Parse the task breakdown from `tasks.md`
+- Validate that all prerequisites are in place (ground rules, spec, plan, and tasks)
+- Parse the task breakdown from `taskify.md`
 - Execute tasks in the correct order, respecting dependencies and parallel execution markers
 - Follow the TDD approach defined in your task plan
 - Provide progress updates and handle errors appropriately
@@ -800,7 +801,7 @@ Once the implementation is complete, test the application and resolve any runtim
 
 ### **STEP 12:** Execute E2E tests with /personas.test
 
-After implementation is complete, run E2E tests to validate user workflows. Use the `/personas.test` command to execute tests according to your test plan:
+After implementation is complete, run E2E tests to validate user workflows. Use the `/personas.test` command to execute tests according to your test spec:
 
 ```text
 /personas.test
@@ -808,8 +809,8 @@ After implementation is complete, run E2E tests to validate user workflows. Use 
 
 The `/personas.test` command will:
 
-- Validate that the test environment matches test-plan.md requirements
-- Execute E2E tests for all user workflows defined in test-plan.md
+- Validate that the test environment matches design-test.md requirements
+- Execute E2E tests for all user workflows defined in design-test.md
 - Capture test artifacts (screenshots, videos, traces) for failures
 - Generate a comprehensive test report in `test-report.md` with:
   - Test results by workflow (pass/fail status)
@@ -818,7 +819,7 @@ The `/personas.test` command will:
   - Performance issues in user workflows
   - Recommendations for fixes and improvements
 
-The test report provides complete traceability from test-plan.md to actual test execution results, helping you identify and fix issues before deployment.
+The test report provides complete traceability from design-test.md to actual test execution results, helping you identify and fix issues before deployment.
 
 </details>
 

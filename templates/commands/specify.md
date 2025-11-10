@@ -136,7 +136,7 @@ Given that feature description, do this:
       
       ## Notes
       
-      - Items marked incomplete require spec updates before `/personas.clarify` or `/personas.plan`
+      - Items marked incomplete require spec updates before `/personas.clarify` or `/personas.design`
       ```
 
    b. **Run Validation Check**: Review the spec against each checklist item:
@@ -261,14 +261,14 @@ Success criteria must be:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.
 
 ```text
-1. /personas.constitution  → Establish project principles
+1. /personas.regulate      → Establish project principles
 2. /personas.specify       → Create feature specifications (YOU ARE HERE)
 3. /personas.clarify       → Clarify requirements (optional) (NEXT STEP)
 4. /personas.architect     → Define system architecture
 5. /personas.standardize   → Establish coding standards
-6. /personas.plan          → Plan feature implementation with design
-7. /personas.test-plan     → Generate E2E test plan
-8. /personas.tasks         → Break down into tasks
+6. /personas.design          → Plan feature implementation with design
+7. /personas.design-test   → Generate E2E test spec
+8. /personas.taskify       → Break down into tasks
 9. /personas.analyze       → Analyze cross-artifact consistency
 10. /personas.implement    → Execute implementation
 11. /personas.test         → Execute E2E tests and generate report

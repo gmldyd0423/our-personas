@@ -6,7 +6,7 @@ description: "Task list template for feature implementation"
 # Tasks: [FEATURE NAME]
 
 **Input**: Design documents from `/specs/[###-feature-name]/`
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+**Prerequisites**: design.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
@@ -23,15 +23,15 @@ description: "Task list template for feature implementation"
 - **Single project**: `src/`, `tests/` at repository root
 - **Web app**: `backend/src/`, `frontend/src/`
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- Paths shown below assume single project - adjust based on design.md structure
 
 <!-- 
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
   
-  The /personas.tasks command MUST replace these with actual tasks based on:
+  The /personas.taskify command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
-  - Feature requirements from plan.md
+  - Feature requirements from design.md
   - Entities from data-model.md
   - Endpoints from contracts/
   
@@ -40,7 +40,7 @@ description: "Task list template for feature implementation"
   - Tested independently
   - Delivered as an MVP increment
   
-  DO NOT keep these sample tasks in the generated tasks.md file.
+  DO NOT keep these sample tasks in the generated taskify.md file.
   ============================================================================
 -->
 

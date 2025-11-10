@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-You are updating the software architecture document at `/d-docs/architecture.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[System Name]`, `[briefly describe the system's purpose]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for the project architecture, and (c) ensure consistency with the project constitution and coding standards.
+You are updating the software architecture document at `/d-docs/architecture.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[System Name]`, `[briefly describe the system's purpose]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely for the project architecture, and (c) ensure consistency with the project ground rules and coding standards.
 
 Follow this execution flow:
 
@@ -93,9 +93,9 @@ Follow this execution flow:
    - Add concrete examples where helpful
 
 5. **Consistency with other project documents**:
-   - Read `/memory/constitution.md` if it exists
+   - Read `/memory/ground-rules.md` if it exists
    - Read `/d-docs/standards.md` if it exists
-   - Ensure architecture aligns with constitutional principles
+   - Ensure architecture aligns with ground rules principles
    - Ensure architecture supports coding standards
    - Flag any conflicts between documents
    - Verify technology choices are consistent across documents
@@ -175,7 +175,7 @@ Follow this execution flow:
    - Key components and their interactions
    - Quality attributes prioritized
    - Infrastructure approach defined
-   - Alignment with constitution and coding standards
+   - Alignment with ground rules and coding standards
    - Architectural patterns applied
    - Follow-up TODOs if any information deferred
 
@@ -242,10 +242,12 @@ Follow this execution flow:
    - Components and their interactions
    - Quality attributes and targets
    - Infrastructure and deployment approach
-   - Alignment status with constitution and coding standards
+   - Alignment status with ground rules and coding standards
    - **Checklist validation results**: Pass/fail status with details
-   - **Readiness for planning**: Confirm if ready for `/personas.plan` or needs updates
-   - **Next recommended step**: Run `/personas.standardize` to establish coding standards aligned with this architecture
+   - **Readiness for planning**: Confirm if ready for `/personas.design` or needs updates
+   - **Next recommended step**:
+     - **Recommended**: Run `/personas.validate-arch` to generate custom architecture validation checklists
+     - **Alternative**: Run `/personas.standardize` to establish coding standards aligned with this architecture
    - Suggested commit message (e.g., `docs: establish architecture for [System Name] v1.0 (MVP microservices)`)
 
 ## Key Guidelines
@@ -339,7 +341,7 @@ The architecture document is complete when:
 - [ ] Design patterns identified and applied
 - [ ] Security considerations addressed
 - [ ] Scalability approach documented
-- [ ] Aligned with project constitution and coding standards
+- [ ] Aligned with project ground rules and coding standards
 - [ ] No template comments or placeholders remain
 - [ ] Document reads as cohesive project documentation
 
@@ -349,30 +351,35 @@ After completing the architecture document and checklist validation:
 
 1. **Review checklist results**: Check `/d-docs/checklists/architecture.md` for any remaining issues
 2. **Commit architecture**: Use suggested commit message to save the architecture document
-3. **Establish coding standards**: Run `/personas.standardize` to create technology-specific coding standards that align with this architecture
+3. **Optional - Validate architecture**: Run `/personas.validate-arch` to generate custom architecture validation checklists for deeper quality assurance
+   - Creates focused checklists for specific architectural concerns (component design, security, deployment, data, performance)
+   - Complements the built-in architecture.md validation with targeted, context-specific checks
+   - Recommended for MVP and Production levels
+4. **Establish coding standards**: Run `/personas.standardize` to create technology-specific coding standards that align with this architecture
    - This ensures consistent development practices across all features
    - Standards will be based on the technology stack defined in this architecture
-   - Required before running `/personas.plan` to ensure implementation plans follow established standards
-4. **Review with stakeholders**: Get feedback from team, product, and ops
-5. **Document ADRs**: Create Architecture Decision Records for key choices
-6. **Update related docs**: Ensure README, design docs align with architecture
-7. **Ready for feature work**: After standards are established, proceed to `/personas.plan` and `/personas.tasks` for feature development
-8. **Set up infrastructure**: Provision cloud resources, containers, etc. (after planning)
-9. **Establish monitoring**: Set up observability for quality attribute tracking
-10. **Create runbooks**: Document operational procedures for the architecture
+   - Required before running `/personas.design` to ensure implementation designs follow established standards
+5. **Review with stakeholders**: Get feedback from team, product, and ops
+6. **Document ADRs**: Create Architecture Decision Records for key choices
+7. **Update related docs**: Ensure README, design docs align with architecture
+8. **Ready for feature work**: After standards are established, proceed to `/personas.design` and `/personas.taskify` for feature development
+9. **Set up infrastructure**: Provision cloud resources, containers, etc. (after planning)
+10. **Establish monitoring**: Set up observability for quality attribute tracking
+11. **Create runbooks**: Document operational procedures for the architecture
 
 **Complete workflow context**:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.
 
 ```text
-1. /personas.constitution  → Establish project principles
+1. /personas.regulate      → Establish project principles
 2. /personas.specify       → Create feature specifications
 3. /personas.clarify       → Clarify requirements (optional)
 4. /personas.architect     → Define system architecture (YOU ARE HERE)
+   ↳ /personas.validate-arch → Validate architecture (optional - recommended for MVP/Production)
 5. /personas.standardize   → Establish coding standards (NEXT STEP)
-6. /personas.plan          → Plan feature implementation with design
-7. /personas.test-plan     → Generate E2E test plan
-8. /personas.tasks         → Break down into tasks
+6. /personas.design          → Plan feature implementation with design
+7. /personas.design-test   → Generate E2E test spec
+8. /personas.taskify       → Break down into tasks
 9. /personas.analyze       → Analyze cross-artifact consistency
 10. /personas.implement    → Execute implementation
 11. /personas.test         → Execute E2E tests and generate report

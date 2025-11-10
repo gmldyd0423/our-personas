@@ -36,35 +36,35 @@ check_feature_branch "$CURRENT_BRANCH" "$HAS_GIT" || exit 1
 # Ensure the feature directory exists
 mkdir -p "$FEATURE_DIR"
 
-# Define test-plan specific path
-TEST_PLAN="$FEATURE_DIR/test-plan.md"
-IMPL_PLAN="$FEATURE_DIR/plan.md"
+# Define design-test specific path
+TEST_SPEC="$FEATURE_DIR/test-spec.md"
+IMPL_PLAN="$FEATURE_DIR/design.md"
 
 # Check if implementation plan exists
 if [[ ! -f "$IMPL_PLAN" ]]; then
     echo "Error: Implementation plan not found at $IMPL_PLAN"
-    echo "Please run /personas.plan first to create the implementation plan"
+    echo "Please run /personas.design first to create the implementation design"
     exit 1
 fi
 
-# Copy test-plan template if it exists
-TEMPLATE="$REPO_ROOT/.personas/templates/test-plan-template.md"
+# Copy test spec template if it exists
+TEMPLATE="$REPO_ROOT/.personas/templates/test-spec-template.md"
 if [[ -f "$TEMPLATE" ]]; then
-    cp "$TEMPLATE" "$TEST_PLAN"
-    echo "Copied test-plan template to $TEST_PLAN"
+    cp "$TEMPLATE" "$TEST_SPEC"
+    echo "Copied test spec template to $TEST_SPEC"
 else
-    echo "Warning: Test plan template not found at $TEMPLATE"
-    # Create a basic test-plan file if template doesn't exist
-    touch "$TEST_PLAN"
+    echo "Warning: Design test template not found at $TEMPLATE"
+    # Create a basic design-test file if template doesn't exist
+    touch "$TEST_SPEC"
 fi
 
 # Output results
 if $JSON_MODE; then
-    printf '{"IMPL_PLAN":"%s","TEST_PLAN":"%s","SPECS_DIR":"%s","BRANCH":"%s","HAS_GIT":"%s"}\n' \
-        "$IMPL_PLAN" "$TEST_PLAN" "$FEATURE_DIR" "$CURRENT_BRANCH" "$HAS_GIT"
+    printf '{"IMPL_PLAN":"%s","TEST_SPEC":"%s","SPECS_DIR":"%s","BRANCH":"%s","HAS_GIT":"%s"}\n' \
+        "$IMPL_PLAN" "$TEST_SPEC" "$FEATURE_DIR" "$CURRENT_BRANCH" "$HAS_GIT"
 else
     echo "IMPL_PLAN: $IMPL_PLAN"
-    echo "TEST_PLAN: $TEST_PLAN"
+    echo "TEST_SPEC: $TEST_SPEC"
     echo "SPECS_DIR: $FEATURE_DIR"
     echo "BRANCH: $CURRENT_BRANCH"
     echo "HAS_GIT: $HAS_GIT"

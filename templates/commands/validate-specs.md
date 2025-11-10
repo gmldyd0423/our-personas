@@ -76,12 +76,12 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Derive checklist theme (e.g., security, review, deploy, ux)
    - Consolidate explicit must-have items mentioned by user
    - Map focus selections to category scaffolding
-   - Infer any missing context from spec/plan/tasks (do NOT hallucinate)
+   - Infer any missing context from spec/design/tasks (do NOT hallucinate)
 
 4. **Load feature context**: Read from FEATURE_DIR:
    - spec.md: Feature requirements and scope
-   - plan.md (if exists): Technical details, dependencies
-   - tasks.md (if exists): Implementation tasks
+   - design.md (if exists): Technical details, dependencies
+   - taskify.md (if exists): Implementation tasks
 
    **Context Loading Strategy**:
    - Load only necessary portions relevant to active focus areas (avoid full-file dumping)
@@ -96,7 +96,7 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Format: `[domain].md`
      - If file exists, append to existing file
    - Number items sequentially starting from CHK001
-   - Each `/personas.checklist` run creates a NEW file (never overwrites existing checklists)
+   - Each `/personas.validate-specs` run creates a NEW file (never overwrites existing checklists)
 
    **CORE PRINCIPLE - Test the Requirements, Not the Implementation**:
    Every checklist item MUST evaluate the REQUIREMENTS THEMSELVES for:
@@ -195,7 +195,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - ❌ References to code execution, user actions, system behavior
    - ❌ "Displays correctly", "works properly", "functions as expected"
    - ❌ "Click", "navigate", "render", "load", "execute"
-   - ❌ Test cases, test plans, QA procedures
+   - ❌ Test cases, test specs, QA procedures
    - ❌ Implementation details (frameworks, APIs, algorithms)
 
    **✅ REQUIRED PATTERNS** - These test requirements quality:
@@ -206,7 +206,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - ✅ "Are [edge cases/scenarios] addressed in requirements?"
    - ✅ "Does the spec define [missing aspect]?"
 
-6. **Structure Reference**: Generate the checklist following the canonical template in `templates/checklist-template.md` for title, meta section, category headings, and ID formatting. If template is unavailable, use: H1 title, purpose/created meta lines, `##` category sections containing `- [ ] CHK### <requirement item>` lines with globally incrementing IDs starting at CHK001.
+6. **Structure Reference**: Generate the checklist following the canonical template in `templates/checklist-spec-template.md` for title, meta section, category headings, and ID formatting. If template is unavailable, use: H1 title, purpose/created meta lines, `##` category sections containing `- [ ] CHK### <requirement item>` lines with globally incrementing IDs starting at CHK001.
 
 7. **Report**: Output full path to created checklist, item count, and remind user that each run creates a new file. Summarize:
    - Focus areas selected
@@ -214,7 +214,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Actor/timing
    - Any explicit user-specified must-have items incorporated
 
-**Important**: Each `/personas.checklist` command invocation creates a checklist file using short, descriptive names unless file already exists. This allows:
+**Important**: Each `/personas.validate-specs` command invocation creates a checklist file using short, descriptive names unless file already exists. This allows:
 
 - Multiple checklists of different types (e.g., `ux.md`, `test.md`, `security.md`)
 - Simple, memorable filenames that indicate checklist purpose
@@ -298,38 +298,38 @@ Sample items:
 
 ## Recommended Workflow
 
-The `/personas.checklist` command can be run at multiple points in the workflow:
+The `/personas.validate-specs` command can be run at multiple points in the workflow:
 
 **After specification (requirements quality checklist)**:
 
 ```text
-/personas.specify → /personas.checklist (YOU ARE HERE) → /personas.clarify
+/personas.specify → /personas.validate-specs (YOU ARE HERE) → /personas.clarify
 ```
 
 **After planning (design quality checklist)**:
 
 ```text
-/personas.plan → /personas.checklist (YOU ARE HERE) → /personas.tasks
+/personas.design → /personas.validate-specs (YOU ARE HERE) → /personas.taskify
 ```
 
 **Before implementation (pre-flight checklist)**:
 
 ```text
-/personas.tasks → /personas.checklist (YOU ARE HERE) → /personas.analyze → /personas.implement
+/personas.taskify → /personas.validate-specs (YOU ARE HERE) → /personas.analyze → /personas.implement
 ```
 
 **Complete workflow context**:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.
 
 ```text
-1. /personas.constitution  → Establish project principles
+1. /personas.regulate      → Establish project principles
 2. /personas.specify       → Create feature specifications
 3. /personas.clarify       → Clarify requirements (optional)
 4. /personas.architect     → Define system architecture
 5. /personas.standardize   → Establish coding standards
-6. /personas.plan          → Plan feature implementation with design
-7. /personas.test-plan     → Generate E2E test plan
-8. /personas.tasks         → Break down into tasks
+6. /personas.design          → Plan feature implementation with design
+7. /personas.design-test   → Generate E2E test spec
+8. /personas.taskify       → Break down into tasks
 9. /personas.analyze       → Analyze cross-artifact consistency
 10. /personas.implement    → Execute implementation
 11. /personas.test         → Execute E2E tests and generate report

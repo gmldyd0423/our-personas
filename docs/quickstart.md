@@ -9,7 +9,7 @@ This guide will help you get started with Spec-Driven Development using Our Pers
 ### For New Projects (Greenfield)
 
 1. **Install Personas** - Bootstrap your project structure
-2. **Establish Principles** - Define project values with `/personas.constitution`
+2. **Establish Principles** - Define project values with `/personas.regulate`
 3. **Create System Overview** - List all features and requirements (Feature 001)
 4. **Define Architecture** - Design system based on Feature 001
 5. **Set Standards** - Establish coding and testing practices
@@ -18,7 +18,7 @@ This guide will help you get started with Spec-Driven Development using Our Pers
 ### For Existing Projects (Adding Features)
 
 1. **Install Personas** - Bootstrap your project structure
-2. **Establish Principles** - Define project values with `/personas.constitution` (if not done)
+2. **Establish Principles** - Define project values with `/personas.regulate` (if not done)
 3. **Define Architecture** - Document existing architecture with `/personas.architect` (if not done)
 4. **Set Standards** - Document current standards with `/personas.standardize` (if not done)
 5. **Implement Features** - Add new features using the spec-plan-implement cycle
@@ -42,10 +42,10 @@ uvx --from git+https://github.com/dauquangthanh/our-personas.git personas init <
 
 ### 2. Establish Project Principles
 
-Use `/personas.constitution` to define your project's governing principles:
+Use `/personas.regulate` to define your project's governing principles:
 
 ```bash
-/personas.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
+/personas.regulate Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
 ```
 
 ### 3. Create System Overview (For New Projects)
@@ -115,26 +115,26 @@ Use the `/personas.specify` command to describe what you want to build. Focus on
 
 ### 7. Create a Technical Implementation Plan
 
-Use the `/personas.plan` command to provide your tech stack and architecture choices.
+Use the `/personas.design` command to provide your tech stack and architecture choices.
 
 ```bash
-/personas.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
+/personas.design The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
 ### 8. Generate E2E Test Plan
 
-Use `/personas.test-plan` to create comprehensive E2E test scenarios:
+Use `/personas.design-test` to create comprehensive E2E test scenarios:
 
 ```bash
-/personas.test-plan
+/personas.design-test
 ```
 
 ### 9. Break Down and Implement
 
-Use `/personas.tasks` to create an actionable task list, then use `/personas.implement` to build the feature:
+Use `/personas.taskify` to create an actionable task list, then use `/personas.implement` to build the feature:
 
 ```bash
-/personas.tasks
+/personas.taskify
 /personas.implement
 ```
 
@@ -155,7 +155,7 @@ Here's a complete example of building a team productivity platform from scratch.
 #### Step 1: Establish Principles
 
 ```text
-/personas.constitution Create principles focused on:
+/personas.regulate Create principles focused on:
 - Code quality: Clean architecture, SOLID principles
 - Testing: 80% coverage, TDD approach, E2E for critical paths
 - User experience: Responsive design, <200ms interactions, accessibility
@@ -291,7 +291,7 @@ Read the review and acceptance checklist, and check off each item in the checkli
 Be specific about implementation details for this feature:
 
 ```text
-/personas.plan For Feature 002, implement:
+/personas.design For Feature 002, implement:
 - .NET 8 Auth Service with in-memory user store (5 predefined users)
 - React frontend with user selection screen
 - PostgreSQL database for projects
@@ -304,13 +304,13 @@ Follow the architecture defined in memory/architecture.md and standards in memor
 #### Step 4: Generate Test Plan
 
 ```text
-/personas.test-plan
+/personas.design-test
 ```
 
 #### Step 5: Break Down Into Tasks
 
 ```text
-/personas.tasks
+/personas.taskify
 ```
 
 #### Step 6: Validate and Implement

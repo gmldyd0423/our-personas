@@ -3,7 +3,7 @@
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
-**Note**: This template is filled in by the `/personas.plan` command. See `.personas/templates/commands/plan.md` for the execution workflow.
+**Note**: This template is filled in by the `/personas.design` command. See `.personas/templates/commands/design.md` for the execution workflow.
 
 ## Summary
 
@@ -27,11 +27,11 @@
 **Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
-## Constitution Check
+## Ground Rules Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+[Gates determined based on ground rules file]
 
 ## Project Structure
 
@@ -39,12 +39,12 @@
 
 ```text
 specs/[###-feature]/
-├── plan.md              # This file (/personas.plan command output)
-├── research.md          # Phase 0 output (/personas.plan command)
-├── data-model.md        # Phase 1 output (/personas.plan command)
-├── quickstart.md        # Phase 1 output (/personas.plan command)
-├── contracts/           # Phase 1 output (/personas.plan command)
-└── tasks.md             # Phase 2 output (/personas.tasks command - NOT created by /personas.plan)
+├── design.md              # This file (/personas.design command output)
+├── research.md          # Phase 0 output (/personas.design command)
+├── data-model.md        # Phase 1 output (/personas.design command)
+├── quickstart.md        # Phase 1 output (/personas.design command)
+├── contracts/           # Phase 1 output (/personas.design command)
+└── taskify.md             # Phase 2 output (/personas.taskify command - NOT created by /personas.design)
 ```
 
 ### Source Code (repository root)
@@ -96,7 +96,7 @@ directories captured above]
 
 ## Complexity Tracking
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
+> **Fill ONLY if Ground Rules Check has violations that must be justified**
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|

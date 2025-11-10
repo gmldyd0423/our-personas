@@ -1,11 +1,11 @@
 {
     "chat.promptFilesRecommendations": {
-        "personas.constitution": true,
+        "personas.regulate": true,
         "personas.specify": true,
         "personas.architect": true,
         "personas.standardize": true,
-        "personas.plan": true,
-        "personas.tasks": true,
+        "personas.design": true,
+        "personas.taskify": true,
         "personas.implement": true
     },
     "chat.tools.terminal.autoApprove": {
