@@ -21,11 +21,44 @@ Identify inconsistencies, duplications, ambiguities, and underspecified items ac
 
 **STRICTLY READ-ONLY**: Do **not** modify any files. Output a structured analysis report. Offer an optional remediation plan (user must explicitly approve before any follow-up editing commands would be invoked manually).
 
-**Ground Rules Authority**: The project ground rules (`/memory/ground-rules.md`) is **non-negotiable** within this analysis scope. Ground rules conflicts are automatically CRITICAL and require adjustment of the spec, plan, or tasks—not dilution, reinterpretation, or silent ignoring of the principle. If a principle itself needs to change, that must occur in a separate, explicit ground rules update outside `/personas.analyze`.
+## Authority Hierarchy
 
-**Architecture Authority**: The system architecture (`/d-docs/architecture.md`) defines the **technical framework** and component boundaries. Conflicts with architectural decisions (component design, communication patterns, technology stack) are HIGH severity and require alignment.
+This analysis enforces a strict authority hierarchy where governance documents have different levels of authority:
 
-**Standards Authority**: The coding standards (`/d-docs/standards.md`) define **implementation practices** and quality requirements. Violations of mandatory standards (testing coverage, security practices, tooling) are MEDIUM-HIGH severity and require compliance.
+### 1. SUPREME AUTHORITY: Ground Rules (`/memory/ground-rules.md`)
+
+**The project ground rules are THE AUTHORITATIVE STANDARD and are ABSOLUTELY NON-NEGOTIABLE.**
+
+- Ground rules define the fundamental principles and constraints that govern the entire project
+- **NOTHING in any other artifact (spec, design, tasks, architecture, standards, company guidelines) can contradict or violate ground rules**
+- Ground rules violations are **ALWAYS CRITICAL** priority and MUST be fixed immediately
+- The spec, design, tasks, architecture, standards, and company guidelines must ALL align with ground rules
+- If ANY conflict exists between ground rules and any other document, ground rules ALWAYS win
+- Ground rules can ONLY be changed through explicit `/personas.regulate` command execution
+- **NEVER suggest diluting, reinterpreting, or ignoring a ground rules principle**
+- Any deviation from ground rules requires:
+  1. Stopping analysis
+  2. Flagging as CRITICAL violation
+  3. Recommending correction of the violating artifact (never the ground rules)
+  4. If ground rules need changing, that's a separate governance decision outside this analysis
+
+### 2. Architecture Authority (`/d-docs/architecture.md`)
+
+- Defines the technical framework and component boundaries (subject to ground rules)
+- Conflicts with architectural decisions are HIGH severity
+- Must align with ground rules principles
+
+### 3. Standards Authority (`/d-docs/standards.md`)
+
+- Defines implementation practices and quality requirements (subject to ground rules)
+- Violations of mandatory standards are MEDIUM-HIGH severity
+- Must align with ground rules principles
+
+### 4. Company Guidelines (`/d-docs/company/`)
+
+- Organizational governance and best practices (subject to ground rules)
+- Must align with ground rules principles
+- Violations are MEDIUM-HIGH severity depending on context
 
 ## Execution Steps
 
@@ -40,41 +73,41 @@ Run `{SCRIPT}` once from repo root and parse JSON for FEATURE_DIR and AVAILABLE_
 Abort with an error message if any required file is missing (instruct the user to run missing prerequisite command).
 For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
-### 2. Load Company Principles
+### 2. Load Company Guidelines
 
-Load organizational governance principles from `/d-docs/company/` (if exists):
+Load organizational governance guidelines from `/d-docs/company/` (if exists):
 
-- **Architecture Principles**: `/d-docs/company/architecture/architecture-principles.md`
+- **Architecture Guidelines**: `/d-docs/company/architecture/architecture-guidelines.md`
   - Component design standards
   - Technology stack guidelines
   - Communication patterns
   - Quality attribute targets
 
-- **Requirements Principles**: `/d-docs/company/requirements/requirements-principles.md`
+- **Requirements Guidelines**: `/d-docs/company/requirements/requirements-guidelines.md`
   - Requirements quality standards
   - Documentation requirements
   - Acceptance criteria guidelines
   - Traceability requirements
 
-- **Design Principles**: `/d-docs/company/design/design-principles.md`
+- **Design Guidelines**: `/d-docs/company/design/design-guidelines.md`
   - Design decision documentation standards
   - Technical design patterns
   - Phase breakdown guidelines
   - Dependency management
 
-- **Coding Principles**: `/d-docs/company/coding/coding-principles.md`
+- **Coding Guidelines**: `/d-docs/company/coding/coding-guidelines.md`
   - Code quality standards
   - Testing requirements
   - Security practices
   - Documentation standards
 
-- **Testing Principles**: `/d-docs/company/testing/testing-principles.md`
+- **Testing Guidelines**: `/d-docs/company/testing/testing-guidelines.md`
   - Test coverage requirements
   - Test scenario standards
   - Test automation guidelines
   - Quality gates
 
-Apply these company principles throughout the analysis to validate compliance with organizational governance.
+Apply these company guidelines throughout the analysis to validate compliance with organizational governance.
 
 ### 3. Load Artifacts (Progressive Disclosure)
 
@@ -106,6 +139,8 @@ Load only the minimal necessary context from each artifact:
 **From ground rules:**
 
 - Load `/memory/ground-rules.md` for principle validation
+- **CRITICAL**: Ground rules are THE AUTHORITATIVE STANDARD - extract ALL principles, constraints, and MUST/SHOULD requirements
+- Every principle in ground rules is non-negotiable and must be validated against all artifacts
 
 **From architecture (if exists):**
 
@@ -133,10 +168,10 @@ Create internal representations (do not include raw artifacts in output):
 - **Requirements inventory**: Each functional + non-functional requirement with a stable key (derive slug based on imperative phrase; e.g., "User can upload file" → `user-can-upload-file`)
 - **User story/action inventory**: Discrete user actions with acceptance criteria
 - **Task coverage mapping**: Map each task to one or more requirements or stories (inference by keyword / explicit reference patterns like IDs or key phrases)
-- **Ground rules rule set**: Extract principle names and MUST/SHOULD normative statements
-- **Architecture constraints**: Extract component definitions, technology choices, communication patterns, and quality targets (if architecture.md exists)
-- **Standards requirements**: Extract mandatory testing, security, and code quality requirements (if standards.md exists)
-- **Company principles alignment**: Extract company-specific governance requirements from loaded principles (if company principles exist)
+- **Ground rules rule set**: Extract ALL principle names and MUST/SHOULD normative statements - this is THE AUTHORITATIVE STANDARD against which everything else is validated
+- **Architecture constraints**: Extract component definitions, technology choices, communication patterns, and quality targets (if architecture.md exists) - must not conflict with ground rules
+- **Standards requirements**: Extract mandatory testing, security, and code quality requirements (if standards.md exists) - must not conflict with ground rules
+- **Company guidelines alignment**: Extract company-specific governance requirements from loaded guidelines (if company guidelines exist) - must not conflict with ground rules
 
 ### 5. Detection Passes (Token-Efficient Analysis)
 
@@ -158,18 +193,30 @@ Focus on high-signal findings. Limit to 50 findings total; aggregate remainder i
 - User stories missing acceptance criteria alignment
 - Tasks referencing files or components not defined in spec/plan
 
-#### D. Ground Rules Alignment
+#### D. Ground Rules Alignment (SUPREME AUTHORITY - HIGHEST PRIORITY)
 
-- Any requirement or plan element conflicting with a MUST principle
+**Ground rules violations are ALWAYS CRITICAL and must be fixed immediately.**
+
+- Any requirement, plan element, or task conflicting with a ground rules MUST principle
 - Missing mandated sections or quality gates from ground rules
+- Any terminology, constraint, or decision that contradicts ground rules
+- Any attempt to dilute, reinterpret, or work around ground rules principles
+- Violations of ground rules SHOULD principles (document as HIGH severity)
 
-#### E. Company Principles Alignment (if company principles exist)
+**REMEMBER**: Ground rules are THE STANDARD. If there's a conflict:
 
-- **Architecture Principles**: Plan or tasks conflicting with company architecture standards
-- **Requirements Principles**: Requirements not meeting company quality standards or traceability requirements
-- **Design Principles**: Design decisions not following company design patterns or documentation standards
-- **Coding Principles**: Tasks not reflecting company code quality or testing requirements
-- **Testing Principles**: Test scenarios or coverage not meeting company testing standards
+- ❌ DO NOT suggest modifying ground rules
+- ❌ DO NOT suggest "exceptions" or "workarounds"
+- ✅ ALWAYS recommend fixing the spec/design/tasks to align with ground rules
+- ✅ If ground rules need changing, that requires explicit `/personas.regulate` command
+
+#### E. Company Guidelines Alignment (if company guidelines exist)
+
+- **Architecture Guidelines**: Plan or tasks conflicting with company architecture standards
+- **Requirements Guidelines**: Requirements not meeting company quality standards or traceability requirements
+- **Design Guidelines**: Design decisions not following company design patterns or documentation standards
+- **Coding Guidelines**: Tasks not reflecting company code quality or testing requirements
+- **Testing Guidelines**: Test scenarios or coverage not meeting company testing standards
 
 #### F. Architecture Alignment (if architecture.md exists)
 
@@ -204,12 +251,46 @@ Focus on high-signal findings. Limit to 50 findings total; aggregate remainder i
 
 ### 6. Severity Assignment
 
-Use this heuristic to prioritize findings:
+Use this heuristic to prioritize findings (in order of severity):
 
-- **CRITICAL**: Violates ground rules MUST, violates company principles MUST, missing core spec artifact, or requirement with zero coverage that blocks baseline functionality
-- **HIGH**: Violates architecture (wrong component, incompatible tech stack), duplicate or conflicting requirement, ambiguous security/performance attribute, untestable acceptance criterion, violates company principles SHOULD
-- **MEDIUM**: Violates standards (missing tests, inadequate coverage), terminology drift, missing non-functional task coverage, underspecified edge case
-- **LOW**: Style/wording improvements, minor redundancy not affecting execution order
+**AUTHORITY HIERARCHY FOR VIOLATIONS:**
+
+1. **Ground Rules** (SUPREME) → Always CRITICAL
+2. **Company Guidelines MUST** → CRITICAL
+3. **Architecture** → HIGH
+4. **Company Guidelines SHOULD** → HIGH
+5. **Standards** → MEDIUM-HIGH
+6. **Other Issues** → MEDIUM/LOW
+
+**Severity Definitions:**
+
+- **CRITICAL**:
+  - **ANY violation of ground rules MUST principles** (ground rules are THE STANDARD - no exceptions)
+  - Violation of ground rules SHOULD principles (if HIGH impact)
+  - Violation of company guidelines MUST requirements
+  - Missing core spec artifact
+  - Requirement with zero coverage that blocks baseline functionality
+  - **Action Required**: MUST be fixed before proceeding - ground rules violations cannot be deployed
+
+- **HIGH**:
+  - Violation of ground rules SHOULD principles (if MEDIUM impact)
+  - Violation of architecture decisions (wrong component, incompatible tech stack)
+  - Duplicate or conflicting requirements
+  - Ambiguous security/performance attributes
+  - Untestable acceptance criteria
+  - Violation of company guidelines SHOULD requirements
+
+- **MEDIUM**:
+  - Violation of standards (missing tests, inadequate coverage)
+  - Terminology drift
+  - Missing non-functional task coverage
+  - Underspecified edge cases
+
+- **LOW**:
+  - Style/wording improvements
+  - Minor redundancy not affecting execution order
+
+**CRITICAL RULE**: If ground rules and any other document conflict, ground rules ALWAYS win. Recommend fixing the other document, NEVER the ground rules.
 
 ### 7. Produce Compact Analysis Report
 
@@ -228,9 +309,17 @@ Output a Markdown report (no file writes) with the following structure:
 | Requirement Key | Has Task? | Task IDs | Notes |
 |-----------------|-----------|----------|-------|
 
-**Ground Rules Alignment Issues:** (if any)
+**Ground Rules Alignment Issues:** (CRITICAL PRIORITY - MUST BE FIXED)
 
-**Company Principles Alignment Issues:** (if company principles exist and issues found)
+If any ground rules violations found, list them here with:
+
+- Specific ground rules principle violated
+- Artifact and location where violation occurs
+- Why this is a violation (reference exact ground rules text)
+- Required remediation (fix the artifact, NOT the ground rules)
+- **Deployment blocker**: Indicate this MUST be resolved before proceeding
+
+**Company Guidelines Alignment Issues:** (if company guidelines exist and issues found)
 
 **Architecture Alignment Issues:** (if architecture.md exists and issues found)
 
@@ -251,9 +340,24 @@ Output a Markdown report (no file writes) with the following structure:
 
 At end of report, output a concise Next Actions block:
 
-- If CRITICAL issues exist: Recommend resolving before `/personas.implement`
-- If only LOW/MEDIUM: User may proceed, but provide improvement suggestions
-- Provide explicit command suggestions: e.g., "Run /personas.specify with refinement", "Run /personas.design to adjust architecture", "Manually edit taskify.md to add coverage for 'performance-metrics'"
+- **If CRITICAL issues exist (especially ground rules violations)**:
+  - **STOP**: Do NOT proceed to implementation
+  - List all CRITICAL issues with required fixes
+  - Ground rules violations MUST be resolved first
+  - Recommend specific commands to fix violations (e.g., `/personas.specify`, `/personas.design`, `/personas.taskify`)
+  - User must re-run `/personas.analyze` after fixes to confirm resolution
+
+- **If only HIGH issues exist**:
+  - Strongly recommend resolving before implementation
+  - Provide prioritized remediation steps
+  - Note: Implementation may proceed at user's risk, but issues should be addressed
+
+- **If only MEDIUM/LOW issues exist**:
+  - User may proceed to implementation
+  - Provide improvement suggestions for future refinement
+  - Provide explicit command suggestions: e.g., "Run /personas.specify with refinement", "Run /personas.design to adjust architecture", "Manually edit taskify.md to add coverage for 'performance-metrics'"
+
+**REMEMBER**: Ground rules violations are ALWAYS blocking - never suggest proceeding with ground rules violations.
 
 ### 8. Offer Remediation
 
@@ -272,9 +376,12 @@ Ask the user: "Would you like me to suggest concrete remediation edits for the t
 
 - **NEVER modify files** (this is read-only analysis)
 - **NEVER hallucinate missing sections** (if absent, report them accurately)
-- **Prioritize ground rules violations** (these are always CRITICAL)
+- **Ground rules are SUPREME AUTHORITY** (violations are ALWAYS CRITICAL and blocking)
+- **NEVER suggest modifying ground rules** (only the artifacts that violate them)
+- **Prioritize ground rules violations above all else** (these block deployment)
 - **Use examples over exhaustive rules** (cite specific instances, not generic patterns)
 - **Report zero issues gracefully** (emit success report with coverage statistics)
+- **When conflicts exist**: Ground rules > Company Guidelines > Architecture > Standards > Spec/Design/Tasks
 
 **Complete workflow context**:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.

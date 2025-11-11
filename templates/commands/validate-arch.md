@@ -84,7 +84,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - `architecture.md`: Primary architecture documentation
    - `standards.md` (if exists): Coding standards that architecture must support
    - `/memory/ground-rules.md` (if exists): Project principles for alignment check
-   - `/d-docs/company/architecture/architecture-principles.md` (if exists): Company-wide architecture principles
+   - `/d-docs/company/architecture/architecture-guidelines.md` (if exists): Company-wide architecture guidelines
    - Relevant spec files (if exists): To ensure architecture supports requirements
 
    **Context Loading Strategy**:
@@ -92,7 +92,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Prefer summarizing long sections into concise architecture points
    - Use progressive disclosure: add follow-on retrieval only if gaps detected
    - If architecture doc is large, generate interim summary items instead of embedding raw text
-   - Apply company architecture principles when evaluating architecture quality
+   - Apply company architecture guidelines when evaluating architecture quality
 
 5. **Generate checklist** - Create "Unit Tests for Architecture":
    - Create `/d-docs/checklists/` directory if it doesn't exist

@@ -30,9 +30,9 @@ Execution steps:
    - If JSON parsing fails, abort and instruct user to re-run `/personas.specify` or verify feature branch environment.
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
-2. **Load company principles** (if they exist):
-   - Read `/d-docs/company/requirements/requirements-principles.md` if it exists
-   - Apply company-wide requirements principles when clarifying specifications
+2. **Load company guidelines** (if they exist):
+   - Read `/d-docs/company/requirements/requirements-guidelines.md` if it exists
+   - Apply company-wide requirements guidelines when clarifying specifications
    - Ensure clarifications align with company requirements standards
 
 3. Load the current spec file. Perform a structured ambiguity & coverage scan using this taxonomy. For each category, mark status: Clear / Partial / Missing. Produce an internal coverage map used for prioritization (do not output raw map unless no questions will be asked).

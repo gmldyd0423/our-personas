@@ -70,9 +70,9 @@ Given that feature description, do this:
 
 3. Load `templates/spec-template.md` to understand required sections.
 
-4. **Load company principles** (if they exist):
-   - Read `/d-docs/company/requirements/requirements-principles.md` if it exists
-   - Apply company-wide requirements principles when creating specifications
+4. **Load company guidelines** (if they exist):
+   - Read `/d-docs/company/requirements/requirements-guidelines.md` if it exists
+   - Apply company-wide requirements guidelines when creating specifications
    - Ensure spec aligns with company requirements standards
 
 5. Follow this execution flow:

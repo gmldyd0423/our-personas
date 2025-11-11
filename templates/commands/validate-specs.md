@@ -78,9 +78,9 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Map focus selections to category scaffolding
    - Infer any missing context from spec/design/tasks (do NOT hallucinate)
 
-4. **Load company requirements principles**: Read `/d-docs/company/requirements/requirements-principles.md` (if exists):
+4. **Load company requirements guidelines**: Read `/d-docs/company/requirements/requirements-guidelines.md` (if exists):
    - Apply company-specific requirements standards and quality criteria
-   - Use company principles to inform checklist generation
+   - Use company guidelines to inform checklist generation
    - Align validation with organizational requirements governance
 
 5. **Load feature context**: Read from FEATURE_DIR:
@@ -94,9 +94,9 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Use progressive disclosure: add follow-on retrieval only if gaps detected
    - If source docs are large, generate interim summary items instead of embedding raw text
 
-6. **Load company requirements principles**: Read `/d-docs/company/requirements/requirements-principles.md` (if exists):
+6. **Load company requirements guidelines**: Read `/d-docs/company/requirements/requirements-guidelines.md` (if exists):
    - Apply company-specific requirements standards and quality criteria
-   - Use company principles to inform checklist generation
+   - Use company guidelines to inform checklist generation
    - Align validation with organizational requirements governance
 
 7. **Generate checklist** - Create "Unit Tests for Requirements":
@@ -115,7 +115,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Consistency**: Do requirements align with each other?
    - **Measurability**: Can requirements be objectively verified?
    - **Coverage**: Are all scenarios/edge cases addressed?
-   - **Company Principles Alignment**: Do requirements comply with company requirements principles?
+   - **Company Guidelines Alignment**: Do requirements comply with company requirements guidelines?
 
    **Category Structure** - Group items by requirement quality dimensions:
    - **Requirement Completeness** (Are all necessary requirements documented?)

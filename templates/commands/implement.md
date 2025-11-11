@@ -17,9 +17,9 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
 
-2. **Load company principles** (if they exist):
-   - Read `/d-docs/company/coding/coding-principles.md` if it exists
-   - Apply company-wide coding principles during implementation
+2. **Load company guidelines** (if they exist):
+   - Read `/d-docs/company/coding/coding-guidelines.md` if it exists
+   - Apply company-wide coding guidelines during implementation
    - Ensure code aligns with company coding standards
 
 3. **Check checklists status** (if FEATURE_DIR/checklists/ exists):

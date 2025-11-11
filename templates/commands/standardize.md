@@ -20,9 +20,9 @@ Follow this execution flow:
    - Identify every placeholder token of the form `[ALL_CAPS_IDENTIFIER]`.
    - Note: This template is designed for full-stack development covering frontend, backend, testing, security, performance, DevOps, and database standards.
 
-2. **Load company principles** (if they exist):
-   - Read `/d-docs/company/coding/coding-principles.md` if it exists
-   - Apply company-wide coding principles when defining project standards
+2. **Load company guidelines** (if they exist):
+   - Read `/d-docs/company/coding/coding-guidelines.md` if it exists
+   - Apply company-wide coding guidelines when defining project standards
    - Ensure standards align with company coding requirements and best practices
 
 3. **Detect project technology stack**:
@@ -109,8 +109,8 @@ Follow this execution flow:
 6. **Consistency with project ground rules** (if exists):
    - Read `/memory/ground-rules.md` if it exists
    - Ensure coding standards align with ground rules
-   - Ensure standards support company coding principles (if loaded)
-   - Flag any conflicts between ground rules, company principles, and coding standards
+   - Ensure standards support company coding guidelines (if loaded)
+   - Flag any conflicts between ground rules, company guidelines, and coding standards
    - Ensure testing requirements match ground rules' test-first mandates
    - Verify version control and review processes align
 
