@@ -195,28 +195,154 @@ Follow this execution flow:
 
 11. **Architecture Quality Validation**: After writing the initial architecture document, validate it against quality criteria:
 
-   a. **Create Architecture Quality Checklist**:
-      - Copy `templates/checklist-arch-template.md` to `/d-docs/checklists/architecture.md`
-      - Replace template placeholders:
-        - `[DATE]` → Current date
-        - `[Mock-up/PoC/MVP/Production]` → Actual product level from architecture document
-      - This checklist contains validation items appropriate for all product levels
-      - Product level determines which sections are mandatory vs optional
+   a. **Create Architecture Quality Checklist**: Generate a checklist file at `/d-docs/checklists/architecture.md` with validation structure:
 
-   b. **Run Validation Check**: Review the architecture document against each checklist item, considering the product level
+      ```markdown
+      # Architecture Quality Checklist
+      
+      **Purpose**: Validate architecture completeness and quality before proceeding to standards and design
+      **Created**: [DATE]
+      **Product Level**: [Mock-up/PoC/MVP/Production]
+      **Architecture Document**: [/d-docs/architecture.md](../architecture.md)
+      
+      ## Architecture Completeness
+      
+      - [ ] System name and purpose clearly defined
+      - [ ] Product level specified with architectural implications
+      - [ ] Technology stack fully documented with versions
+      - [ ] All stakeholders and their concerns identified
+      - [ ] Appropriate architectural views selected (Logical, Process, Deployment, Data)
+      
+      ## Quality Attributes (Product Level Dependent)
+      
+      **Mock-up Requirements**:
+      - [ ] Basic UI/UX architecture defined
+      - [ ] Simple component structure documented
+      
+      **PoC Requirements** (includes Mock-up):
+      - [ ] Core technical feasibility demonstrated
+      - [ ] Key components identified with basic responsibilities
+      - [ ] Basic error handling approach defined
+      
+      **MVP Requirements** (includes PoC):
+      - [ ] Essential components for user value defined
+      - [ ] Security essentials documented (authentication, authorization, data protection)
+      - [ ] Performance baseline established with targets
+      - [ ] Vertical scaling approach defined
+      - [ ] Basic monitoring and logging planned
+      
+      **Production Requirements** (includes MVP):
+      - [ ] All quality attributes have specific, measurable targets
+      - [ ] High availability setup documented (uptime SLA, failover)
+      - [ ] Horizontal scaling capabilities defined
+      - [ ] Comprehensive security hardening documented
+      - [ ] Full observability stack planned (metrics, logs, traces)
+      - [ ] Disaster recovery strategy documented
+      - [ ] Performance optimization approach defined
+      
+      ## Component Architecture
+      
+      - [ ] All components have clear, single responsibilities
+      - [ ] Component interactions and communication patterns documented
+      - [ ] Inter-component communication mechanisms specified (REST, gRPC, message queues, etc.)
+      - [ ] Data ownership and boundaries clarified
+      - [ ] Component dependencies are explicit
+      
+      ## Infrastructure & Deployment
+      
+      - [ ] Deployment strategy defined
+      - [ ] Infrastructure approach documented (cloud provider, containers, orchestration)
+      - [ ] Scalability approach appropriate for product level
+      - [ ] Infrastructure costs considered and documented
+      
+      ## Data Architecture
+      
+      - [ ] Data stores identified with justification
+      - [ ] Data persistence strategy defined
+      - [ ] Data flow between components documented
+      
+      ## Architectural Decisions
+      
+      - [ ] Key architectural decisions recorded with rationale
+      - [ ] Alternative approaches considered and documented
+      - [ ] Trade-offs explicitly stated
+      - [ ] Architectural style justified (monolith, microservices, etc.)
+      
+      ## Security & Compliance
+      
+      - [ ] Security policies defined system-wide
+      - [ ] Data protection at rest and in transit addressed
+      - [ ] Access control mechanisms defined
+      - [ ] Threat mitigation strategies documented
+      
+      ## Consistency & Standards
+      
+      - [ ] Architecture aligns with project ground rules (if exists)
+      - [ ] Technology choices consistent across document
+      - [ ] No unexplained placeholder tokens remain
+      - [ ] No ACTION REQUIRED comments remain
+      
+      ## Documentation Quality
+      
+      - [ ] Diagrams referenced or described in detail
+      - [ ] Technical terms and acronyms defined
+      - [ ] Document reads as cohesive project documentation
+      - [ ] Concrete examples provided where helpful
+      
+      ---
+      
+      ## Validation Iterations
+      
+      ### Iteration 1: [Timestamp]
+      - **Status**: [Pass/Fail]
+      - **Issues Found**: [List issues or "None"]
+      - **Fixes Applied**: [List fixes or "N/A"]
+      
+      ### Iteration 2: [Timestamp]
+      - **Status**: [Pass/Fail]
+      - **Issues Found**: [List issues or "None"]
+      - **Fixes Applied**: [List fixes or "N/A"]
+      
+      ### Iteration 3: [Timestamp]
+      - **Status**: [Pass/Fail]
+      - **Issues Found**: [List issues or "None"]
+      - **Fixes Applied**: [List fixes or "N/A"]
+      
+      ---
+      
+      ## Overall Assessment
+      
+      **Final Status**: [Ready for Standards / Needs Updates]
+      
+      **Blockers**:
+      - [List any blocking issues or "None"]
+      
+      **Recommendations**:
+      - [List recommendations for improvement or "None"]
+      
+      **Notes**:
+      - [Additional context or observations]
+      ```
+
+   b. **Run Validation Check**: Review the architecture document against each checklist item:
+      - Evaluate each item based on the product level (some items only apply to MVP/Production)
+      - For each item, determine if it passes or fails
+      - Document specific issues found with context (quote relevant architecture sections)
 
    c. **Handle Validation Results**:
+
       - **If all required items pass**: Mark checklist complete and proceed
+
       - **If items fail**:
         1. List the failing items and specific issues with context
-        1. Determine if failures are blockers based on product level:
-           - Mock-up: Only basic completeness required
-           - PoC: Core technical approach must be clear
-           - MVP: Security + performance baselines required
-           - Production: All quality attributes must be comprehensive
-        1. Update the architecture to address blocking issues
-        1. Re-run validation until all blocking items pass (max 3 iterations)
-        1. If still failing after 3 iterations:
+        2. Determine if failures are blockers based on product level:
+           - **Mock-up**: Only basic completeness required
+           - **PoC**: Core technical approach must be clear
+           - **MVP**: Security + performance baselines required
+           - **Production**: All quality attributes must be comprehensive
+        3. Update the architecture document to address blocking issues
+        4. Re-run validation until all blocking items pass (max 3 iterations)
+        5. If still failing after 3 iterations:
            - Document remaining issues in checklist notes
            - Warn user about incomplete areas
            - Suggest specific improvements needed
@@ -229,7 +355,7 @@ Follow this execution flow:
         - Issues found (or "None")
         - Fixes applied (or "N/A")
       - Update "Overall Assessment" section with:
-        - Final status (Ready for Planning / Needs Updates)
+        - Final status (Ready for Standards / Needs Updates)
         - Any blockers identified
         - Recommendations for improvement
       - Add notes for context or additional observations
@@ -243,14 +369,56 @@ Follow this execution flow:
    - Quality attributes and targets
    - Infrastructure and deployment approach
    - Alignment status with ground rules and coding standards
-   - **Checklist validation results**: Pass/fail status with details
-   - **Readiness for planning**: Confirm if ready for `/personas.design` or needs updates
+   - **Checklist validation results**: Pass/fail status with details on which items passed/failed
+   - **Readiness for next phase**: Confirm if ready for `/personas.standardize` or needs updates
    - **Next recommended step**:
-     - **Recommended**: Run `/personas.validate-arch` to generate custom architecture validation checklists
+     - **Recommended**: Run `/personas.validate-arch` to generate custom architecture validation checklists for deeper quality assurance
      - **Alternative**: Run `/personas.standardize` to establish coding standards aligned with this architecture
    - Suggested commit message (e.g., `docs: establish architecture for [System Name] v1.0 (MVP microservices)`)
 
-## Key Guidelines
+## General Guidelines
+
+### Quick Guidelines
+
+- Focus on **system structure and component interactions**, not implementation details
+- Address **stakeholder concerns** through multiple architectural views
+- Make **quality attributes measurable** (performance, availability, scalability)
+- Document **architectural decisions** with rationale and trade-offs
+- Align architecture with **product maturity level** (Mock-up, PoC, MVP, Production)
+- Ensure **technology stack is specific** with versions and justifications
+
+### For AI Generation
+
+When creating architecture from user input:
+
+1. **Make informed architectural choices**: Use industry best practices and proven patterns
+2. **Document assumptions**: Record technology choices and their rationale
+3. **Tailor to product level**: Don't over-engineer for PoC, don't under-specify for Production
+4. **Be specific about quality attributes**: Use concrete numbers (99.9% uptime, <500ms latency)
+5. **Choose appropriate patterns**: Match architectural style to requirements and constraints
+6. **Common areas requiring attention**:
+   - Component boundaries and responsibilities
+   - Inter-component communication mechanisms
+   - Data storage and persistence strategies
+   - Security and authentication approach
+   - Scalability and performance targets
+   - Deployment and infrastructure strategy
+
+**Examples of good architectural specifications**:
+
+- "API Gateway handles authentication using JWT tokens with 15-minute expiration"
+- "PostgreSQL 15.x for relational data with read replicas for scaling"
+- "Microservices communicate via RESTful APIs with circuit breaker pattern"
+- "Target: 99.9% uptime (8.76 hours downtime/year)"
+
+**Examples of poor architectural specifications** (too vague):
+
+- "Use a database for storage" (which database? why?)
+- "High availability required" (what percentage? how achieved?)
+- "Services talk to each other" (synchronous? asynchronous? protocol?)
+- "Secure authentication" (how? what mechanism? what tokens?)
+
+### Key Architecture Principles
 
 1. **Stakeholder-Driven Architecture**:
    - Address concerns of all stakeholders (developers, ops, product, QA, security)
