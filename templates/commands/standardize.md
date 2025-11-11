@@ -150,7 +150,7 @@ Follow this execution flow:
      - cargo test for testing
      - Cargo for dependencies
 
-7. **Produce a Sync Impact Report** (prepend as HTML comment):
+8. **Produce a Sync Impact Report** (prepend as HTML comment):
    - Version change: old → new
    - Technology stack detected
    - Sections filled vs. removed (and why)
@@ -158,7 +158,7 @@ Follow this execution flow:
    - Tool recommendations based on stack
    - Follow-up TODOs if any placeholders deferred
 
-8. **Validation before final output**:
+9. **Validation before final output**:
    - No remaining unexplained bracket tokens
    - All guidelines are specific and measurable
    - Version line matches report
@@ -168,9 +168,9 @@ Follow this execution flow:
    - Security standards meet industry best practices
    - Performance targets are realistic for the project type
 
-9. **Write the completed coding standard** back to `/d-docs/standards.md` (overwrite).
+10. **Write the completed coding standard** back to `/d-docs/standards.md` (overwrite).
 
-10. **Output a final summary to the user** with:
+11. **Output a final summary to the user** with:
     - New version and bump rationale
     - Technology stack detected and configured for
     - Key standards established (frontend, backend, testing, security)
