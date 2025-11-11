@@ -267,8 +267,8 @@ Your response **MUST** suggest the user's next step, following the sequential or
 3. /personas.clarify       → Clarify requirements (optional)
 4. /personas.architect     → Define system architecture
 5. /personas.standardize   → Establish coding standards (YOU ARE HERE)
-6. /personas.design          → Plan feature implementation with design (NEXT STEP)
-7. /personas.design-test   → Generate E2E test spec
+6. /personas.design        → Design feature implementation plan (NEXT STEP)
+7. /personas.design-test   → Generate E2E test scenario
 8. /personas.taskify       → Break down into tasks
 9. /personas.analyze       → Analyze cross-artifact consistency
 10. /personas.implement    → Execute implementation

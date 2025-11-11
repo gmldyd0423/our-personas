@@ -1,4 +1,4 @@
-# E2E Test Plan: [FEATURE]
+# E2E Test Scenario: [FEATURE]
 
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Design**: [link to design.md]
 **Input**: User workflows from `/specs/[###-feature-name]/quickstart.md`

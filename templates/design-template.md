@@ -1,4 +1,4 @@
-# Implementation Plan: [FEATURE]
+# Implementation Design: [FEATURE]
 
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
