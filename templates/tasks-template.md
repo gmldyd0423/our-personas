@@ -40,7 +40,7 @@ description: "Task list template for feature implementation"
   - Tested independently
   - Delivered as an MVP increment
   
-  DO NOT keep these sample tasks in the generated taskify.md file.
+  DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
 -->
 

@@ -1,5 +1,5 @@
 ---
-description: Perform a non-destructive cross-artifact consistency and quality analysis across spec.md, design.md, and taskify.md after task generation.
+description: Perform a non-destructive cross-artifact consistency and quality analysis across spec.md, design.md, and tasks.md after task generation.
 scripts:
   sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
   ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
@@ -15,7 +15,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Identify inconsistencies, duplications, ambiguities, and underspecified items across the core artifacts (`spec.md`, `design.md`, `taskify.md`) and foundational documents (`ground-rules.md`, `architecture.md`, `standards.md`) before implementation. This command MUST run only after `/personas.taskify` has successfully produced a complete `taskify.md`.
+Identify inconsistencies, duplications, ambiguities, and underspecified items across the core artifacts (`spec.md`, `design.md`, `tasks.md`) and foundational documents (`ground-rules.md`, `architecture.md`, `standards.md`) before implementation. This command MUST run only after `/personas.taskify` has successfully produced a complete `tasks.md`.
 
 ## Operating Constraints
 
@@ -68,7 +68,7 @@ Run `{SCRIPT}` once from repo root and parse JSON for FEATURE_DIR and AVAILABLE_
 
 - SPEC = FEATURE_DIR/spec.md
 - PLAN = FEATURE_DIR/design.md
-- TASKS = FEATURE_DIR/taskify.md
+- TASKS = FEATURE_DIR/tasks.md
 
 Abort with an error message if any required file is missing (instruct the user to run missing prerequisite command).
 For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
@@ -128,7 +128,7 @@ Load only the minimal necessary context from each artifact:
 - Phases
 - Technical constraints
 
-**From taskify.md:**
+**From tasks.md:**
 
 - Task IDs
 - Descriptions
@@ -355,7 +355,7 @@ At end of report, output a concise Next Actions block:
 - **If only MEDIUM/LOW issues exist**:
   - User may proceed to implementation
   - Provide improvement suggestions for future refinement
-  - Provide explicit command suggestions: e.g., "Run /personas.specify with refinement", "Run /personas.design to adjust architecture", "Manually edit taskify.md to add coverage for 'performance-metrics'"
+  - Provide explicit command suggestions: e.g., "Run /personas.specify with refinement", "Run /personas.design to adjust architecture", "Manually edit tasks.md to add coverage for 'performance-metrics'"
 
 **REMEMBER**: Ground rules violations are ALWAYS blocking - never suggest proceeding with ground rules violations.
 

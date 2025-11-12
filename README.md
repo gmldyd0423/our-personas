@@ -790,7 +790,7 @@ With the test spec in place, you can now break down the implementation plan into
 /personas.taskify
 ```
 
-This step creates a `taskify.md` file in your feature specification directory that contains:
+This step creates a `tasks.md` file in your feature specification directory that contains:
 
 - **Task breakdown organized by user story** - Each user story becomes a separate implementation phase with its own set of tasks
 - **Dependency management** - Tasks are ordered to respect dependencies between components (e.g., models before services, services before endpoints)
@@ -799,7 +799,7 @@ This step creates a `taskify.md` file in your feature specification directory th
 - **Test-driven development structure** - If tests are requested, test tasks are included and ordered to be written before implementation
 - **Checkpoint validation** - Each user story phase includes checkpoints to validate independent functionality
 
-The generated taskify.md provides a clear roadmap for the `/personas.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
+The generated tasks.md provides a clear roadmap for the `/personas.implement` command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.
 
 ### **STEP 11:** Implementation
 
@@ -812,7 +812,7 @@ Once ready, use the `/personas.implement` command to execute your implementation
 The `/personas.implement` command will:
 
 - Validate that all prerequisites are in place (ground rules, spec, plan, and tasks)
-- Parse the task breakdown from `taskify.md`
+- Parse the task breakdown from `tasks.md`
 - Execute tasks in the correct order, respecting dependencies and parallel execution markers
 - Follow the TDD approach defined in your task plan
 - Provide progress updates and handle errors appropriately

@@ -1,5 +1,5 @@
 ---
-description: Execute the implementation plan by processing and executing all tasks defined in taskify.md
+description: Execute the implementation plan by processing and executing all tasks defined in tasks.md
 scripts:
   sh: scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks
   ps: scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks
@@ -54,7 +54,7 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Automatically proceed to step 3
 
 4. Load and analyze the implementation context:
-   - **REQUIRED**: Read taskify.md for the complete task list and execution plan
+   - **REQUIRED**: Read tasks.md for the complete task list and execution plan
    - **REQUIRED**: Read design.md for tech stack, architecture, and file structure
    - **IF EXISTS**: Read `/d-docs/architecture.md` for system design and component architecture
    - **IF EXISTS**: Read `/d-docs/standards.md` for coding standards, testing requirements, and quality practices
@@ -106,7 +106,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`
 
-6. Parse taskify.md structure and extract:
+6. Parse tasks.md structure and extract:
    - **Task phases**: Setup, Tests, Core, Integration, Polish
    - **Task dependencies**: Sequential vs parallel execution rules
    - **Task details**: ID, description, file paths, parallel markers [P]
@@ -141,7 +141,7 @@ You **MUST** consider the user input before proceeding (if not empty).
     - Confirm the implementation follows the technical plan
     - Report final status with summary of completed work
 
-Note: This command assumes a complete task breakdown exists in taskify.md. If tasks are incomplete or missing, suggest running `/personas.taskify` first to regenerate the task list.
+Note: This command assumes a complete task breakdown exists in tasks.md. If tasks are incomplete or missing, suggest running `/personas.taskify` first to regenerate the task list.
 
 **Complete workflow context**:
 Your response **MUST** suggest the user's next step, following the sequential order below and based on the result of the last action.

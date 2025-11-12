@@ -44,7 +44,7 @@ specs/[###-feature]/
 ├── data-model.md        # Phase 1 output (/personas.design command)
 ├── quickstart.md        # Phase 1 output (/personas.design command)
 ├── contracts/           # Phase 1 output (/personas.design command)
-└── taskify.md             # Phase 2 output (/personas.taskify command - NOT created by /personas.design)
+└── tasks.md             # Phase 2 output (/personas.taskify command - NOT created by /personas.design)
 ```
 
 ### Source Code (repository root)

@@ -249,7 +249,7 @@ Analyzes the plan and related design documents to generate an executable task li
 3. **Parallelization**: Marks independent tasks `[P]` and outlines safe parallel groups
 4. **User Story Organization**: Groups tasks by user story for incremental delivery
 5. **Test-First Support**: Includes test tasks ordered before implementation when TDD is required
-6. **Output**: Writes `taskify.md` in the feature directory, ready for execution
+6. **Output**: Writes `tasks.md` in the feature directory, ready for execution
 
 ### The `/personas.analyze` Command
 
@@ -377,7 +377,7 @@ Total: ~20-25 hours of documentation and planning work
 /personas.taskify
 
 # This creates:
-# - specs/002-kanban-board/taskify.md with dependency-ordered task list
+# - specs/002-kanban-board/tasks.md with dependency-ordered task list
 
 # Step 10: Validate consistency (optional, 5 minutes)
 /personas.analyze
@@ -576,7 +576,7 @@ This prevents the common problem of specifications becoming unreadable code dump
 The workflow enforces test-driven development:
 
 ```text
-### File Creation Order (from taskify.md)
+### File Creation Order (from tasks.md)
 1. Create `contracts/` with API specifications
 2. Create test files in order: contract → integration → e2e → unit
 3. Create source files to make tests pass
