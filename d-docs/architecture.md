@@ -64,7 +64,7 @@ This architectural design is for a **[select one: Mock-up, Proof of Concept (PoC
 
 ## 2. Architectural Representation
 <!--
-  ACTION REQUIRED: Map stakeholders to their concerns and define which architectural views will address them. All diagrams should be illustrated in Mermaid format if possible.
+  ACTION REQUIRED: Map stakeholders to their concerns and define which architectural views will address them. IMPORTANT NOTES: All diagrams should be illustrated in Mermaid format if possible.
 -->
 
 ### 2.1 Stakeholders and Concerns
