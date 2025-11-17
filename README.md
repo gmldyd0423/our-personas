@@ -74,6 +74,7 @@ personas init --upgrade
 ```
 
 This will:
+
 - Replace `.personas/` folder (scripts, templates, memory) with latest version
 - Replace agent-specific folders (`.claude/`, `.gemini/`, etc.) with latest templates
 - Create timestamped backups (e.g., `.personas.backup-20251116-143022`)
